@@ -1,10 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class CharacterSwitcher : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> players = new List<GameObject>();
+    [SerializeField] List<GameObject> activePlayers = new List<GameObject>();
+    [SerializeField] List<GameObject> unreadyPanels = new List<GameObject>();
+    [SerializeField] List<GameObject> readyPanels = new List<GameObject>();
+    private List<InputDevice> activeDevices = new List<InputDevice>();
+    public string gameSceneName;
+
     private PlayerInputManager manager;
     private int index = 0;
 
@@ -19,7 +27,7 @@ public class CharacterSwitcher : MonoBehaviour
         }
 
         index = 0;
-        manager.playerPrefab = players[index];
+        // manager.playerPrefab = players[index];
 
         // Subscribe to player join event
         manager.onPlayerJoined += OnPlayerJoined;
@@ -32,6 +40,19 @@ public class CharacterSwitcher : MonoBehaviour
             Debug.LogError("No player prefabs available!");
             return;
         }
+
+        if (index >= unreadyPanels.Count)
+        {
+            Debug.LogWarning("Maximum number of players reached!");
+            return;
+        }
+
+        // Activate the corresponding unready panel
+        unreadyPanels[index].SetActive(false);
+        readyPanels[index].SetActive(true);
+        SpriteRenderer playerSpriteRenderer = players[index].GetComponent<SpriteRenderer>();
+        Image panelImage = readyPanels[index].transform.Find("Image")?.GetComponent<Image>();
+        panelImage.color = playerSpriteRenderer.color;
 
         // Increment index and wrap around
         index = (index + 1) % players.Count;
@@ -49,10 +70,20 @@ public class CharacterSwitcher : MonoBehaviour
         // Log the device for debugging
         Debug.Log($"Player {newPlayer.playerIndex} joined using device: {spawningDevice.displayName}");
 
+        // Add the new player to the list of active players
+        activePlayers.Add(newPlayer.gameObject);
+        DontDestroyOnLoad(newPlayer);
+
         // Explicitly assign the control scheme to lock the player to their device
         newPlayer.SwitchCurrentControlScheme(spawningDevice);
 
         // Optionally assign a custom name to the player
         newPlayer.gameObject.name = $"Player {newPlayer.playerIndex}";
+    }
+
+    public void StartGame()
+    {
+        GameDataManager.activePlayers = activePlayers;
+        SceneManager.LoadScene(gameSceneName);
     }
 }
