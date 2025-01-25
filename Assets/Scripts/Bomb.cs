@@ -20,16 +20,19 @@ public class Bomb : MonoBehaviour
     private float _radius = 0;
     private float _arcStride = 0;
 
-    void Awake() {
+    void Awake() 
+    {
         _radius = GetComponent<SpriteRenderer>().bounds.size.x / 2;
         _arcStride = 360.0f / _projectiles;
     }
 
-    void Start() {
+    void Start() 
+    {
         Invoke(nameof(Detonate), _detonationTime);
     }
 
-    private void Detonate() {
+    private void Detonate() 
+    {
         for (int i = 0; i < _projectiles; i++)
         {
             GameObject projectile = new GameObject("Projectile");
@@ -38,17 +41,22 @@ public class Bomb : MonoBehaviour
             float angle = i * Mathf.PI * 2 / _projectiles;
             float xAngle = Mathf.Cos(angle);
             float yAngle = Mathf.Sin(angle);
-            
-            // Set the position along the circumference of the circle based on the arc stride
-            projectile.transform.SetLocalPositionAndRotation(
-                new Vector3(
-                    xAngle * _radius, 
-                    yAngle * _radius,
-                0
-                ),
-                Quaternion.Euler(0, 0, i * _arcStride)
-            );
 
+            projectile.AddComponent<Rotator>();
+
+            // TODO: Fix the rotation of the projectiles
+            // Debug.Log("Arc Stride: " + (i * _arcStride) + " xAngle: " + xAngle + " yAngle: " + yAngle);
+            // Set the position along the circumference of the circle based on the arc stride
+            // projectile.transform.SetLocalPositionAndRotation(
+            //     new Vector3(
+            //         xAngle * _radius, 
+            //         yAngle * _radius,
+            //     0
+            //     ),
+            //     Quaternion.Euler(0, 0, i * _arcStride + 45)
+            // );
+
+            projectile.transform.localPosition = new Vector3(xAngle * _radius, yAngle * _radius, 0);
             projectile.transform.localScale = new Vector3(_projectileScale, _projectileScale, 1);
 
             SpriteRenderer projectileSpriteRenderer = projectile.AddComponent<SpriteRenderer>();

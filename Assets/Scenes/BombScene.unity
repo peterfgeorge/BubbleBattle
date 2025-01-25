@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 596118127}
   - component: {fileID: 596118126}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.05306603, g: 0.75, b: 0.2335193, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -247,8 +247,8 @@ Transform:
   m_GameObject: {fileID: 596118125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.34, y: 1.16, z: 0}
-  m_LocalScale: {x: 0.6264, y: 7.5015, z: 1}
+  m_LocalPosition: {x: 6.12, y: 8.52, z: 0}
+  m_LocalScale: {x: 1.7294601, y: 18.385427, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 1726733961}
   - component: {fileID: 1726733960}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,11 +375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76497cfbc1d81ff43a7822f983210353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectiles: 20
-  _detonationTime: 3
-  _projectileSpeed: 100
+  _projectiles: 10
+  _detonationTime: 1
+  _projectileSpeed: 200
   _projectileScale: 0.5
-  _projectileSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  _projectileSprite: {fileID: -3266210453699307898, guid: 864f331bcbe3db1499503fbab23bc11d, type: 3}
 --- !u!212 &1726733961
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -424,8 +424,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.73290205, b: 1, a: 1}
+  m_Sprite: {fileID: -68264836794118590, guid: 79a7db07ad80b7e449ea832a1168e7d8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -444,9 +444,9 @@ Transform:
   m_GameObject: {fileID: 1726733959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5380857, y: 0.062231433, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -3.37, y: -0.13, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
