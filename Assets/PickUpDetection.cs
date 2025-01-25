@@ -3,6 +3,7 @@ using UnityEngine;
 public class PickUpDetection : MonoBehaviour
 {
     public string itemName; // Set this in the Inspector or dynamically
+    public bool isBubbleItem = false;  // Flag to check if it's a bubbles item
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,17 +13,27 @@ public class PickUpDetection : MonoBehaviour
             PlayerController player = collision.GetComponent<PlayerController>();
             if (player != null)
             {
-                // Try to add the item to the player's inventory
-                if (player.TryPickUpItem(itemName))
+                if (isBubbleItem)
                 {
-                    Destroy(gameObject); // Destroy the item only if it was successfully picked up
+                    // If it's a Bubbles item, increase the bubble count
+                    player.AddBubbles(1);  // Add 1 bubble (adjustable)
+                    Destroy(gameObject);   // Destroy the bubbles item after pickup
                 }
                 else
                 {
-                    Debug.Log($"Player cannot pick up {itemName}. They already have an item.");
+                    // Regular item pickup (inventory)
+                    if (player.TryPickUpItem(itemName))
+                    {
+                        Destroy(gameObject);  // Destroy the regular item after pickup
+                    }
+                    else
+                    {
+                        Debug.Log($"Player cannot pick up {itemName}. Inventory is full.");
+                    }
                 }
             }
         }
     }
 }
+
 
