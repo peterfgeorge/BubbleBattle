@@ -49,9 +49,10 @@ public class CharacterSwitcher : MonoBehaviour
         // Log the device for debugging
         Debug.Log($"Player {newPlayer.playerIndex} joined using device: {spawningDevice.displayName}");
 
-        // Assign the name to the player
-        newPlayer.gameObject.name = $"Player {newPlayer.playerIndex}";
+        // Explicitly assign the control scheme to lock the player to their device
+        newPlayer.SwitchCurrentControlScheme(spawningDevice);
 
-        // Optionally, set custom input actions or behaviors for the player here
+        // Optionally assign a custom name to the player
+        newPlayer.gameObject.name = $"Player {newPlayer.playerIndex}";
     }
 }

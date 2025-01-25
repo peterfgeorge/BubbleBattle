@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public InputActionReference move;
     public InputActionReference fire;
 
+    private void Awake()
+    {
+        var playerInput = GetComponent<PlayerInput>();
+        Debug.Log($"Player {playerInput.playerIndex} using device: {playerInput.devices[0].displayName}");
+    }
+
     private void Update()
     {
         moveDirection = move.action.ReadValue<Vector2>();
