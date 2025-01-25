@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841636628336788360, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: fire
+      value: 
+      objectReference: {fileID: -5177570486736266356, guid: 6d96756f63d8645569256695b1102ef0, type: 3}
+    - target: {fileID: 2841636628336788360, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: move
+      value: 
+      objectReference: {fileID: -821238044957959041, guid: 6d96756f63d8645569256695b1102ef0, type: 3}
     - target: {fileID: 3532347007873150500, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_Name
       value: Player2 Variant
@@ -50,6 +70,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3685089836487615452, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 6d96756f63d8645569256695b1102ef0, type: 3}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: 1e37e9cd-79ee-43c3-8b91-fabc383f3f81
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: b579ef00-c516-4bdf-865b-07be25dfae8d
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: 'Gameplay/Fire[/Keyboard/f]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: 'Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
