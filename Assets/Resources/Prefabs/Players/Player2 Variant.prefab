@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7502267717901054630
+--- !u!1001 &9186024457223077746
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_Color.g
-      value: 0.96754205
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1726869782374882942, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_Color.r
@@ -23,22 +27,22 @@ PrefabInstance:
     - target: {fileID: 2841636628336788360, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: fire
       value: 
-      objectReference: {fileID: -4307538828123010171, guid: 75eba9ed7d3ec45f28479c2a5fb830e0, type: 3}
+      objectReference: {fileID: -5177570486736266356, guid: 6d96756f63d8645569256695b1102ef0, type: 3}
     - target: {fileID: 2841636628336788360, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: move
       value: 
-      objectReference: {fileID: 7397154085184874467, guid: 75eba9ed7d3ec45f28479c2a5fb830e0, type: 3}
+      objectReference: {fileID: -821238044957959041, guid: 6d96756f63d8645569256695b1102ef0, type: 3}
     - target: {fileID: 3532347007873150500, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_Name
-      value: Player3 Variant
+      value: Player2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3685089836487615452, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.6041925
       objectReference: {fileID: 0}
     - target: {fileID: 3685089836487615452, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.032495942
       objectReference: {fileID: 0}
     - target: {fileID: 3685089836487615452, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72,29 +76,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3928874546575328983, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928874546575328983, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.12496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928874546575328983, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.12496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928874546575328983, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928874546575328983, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719310983671379569, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -886913327224513473, guid: f72494e97be6f4fe49c1e0b84cb68a47, type: 3}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_Actions
       value: 
-      objectReference: {fileID: -944628639613478452, guid: 75eba9ed7d3ec45f28479c2a5fb830e0, type: 3}
+      objectReference: {fileID: -944628639613478452, guid: 6d96756f63d8645569256695b1102ef0, type: 3}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionId
-      value: b693ab12-4fdf-420a-be44-33b123a4f08a
+      value: 1e37e9cd-79ee-43c3-8b91-fabc383f3f81
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_ActionId
-      value: 70edfb88-5149-4545-90f3-f20607ec13f1
+      value: b579ef00-c516-4bdf-865b-07be25dfae8d
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
-      value: 'Gameplay/Fire[/XboxOneGampadMacOSWireless/buttonWest]'
+      value: 'Gameplay/Fire[/Keyboard/f]'
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_ActionName
-      value: 'Gameplay/New action[/XboxOneGampadMacOSWireless/leftStick]'
+      value: 'Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
