@@ -55,37 +55,42 @@ public class PlayerController : MonoBehaviour
 
             Vector3 spawnOffset;
 
+            float offsetDistance = transform.localScale.x * 1.5f;  // Multiply scale by a factor (adjust as necessary)
+        
             if (moveDirection.x > 0)  // Player is moving right
             {
-                spawnOffset = transform.right * 1.0f;
+                spawnOffset = transform.right * offsetDistance;
             }
             else if (moveDirection.x < 0)  // Player is moving left
             {
-                spawnOffset = -transform.right * 1.0f;
+                spawnOffset = -transform.right * offsetDistance;
             }
             else if (moveDirection.y > 0)  // Player is moving up
             {
-                spawnOffset = transform.up * 1.0f;
+                spawnOffset = transform.up * offsetDistance;
             }
             else if (moveDirection.y < 0)  // Player is moving down
             {
-                spawnOffset = -transform.up * 1.0f;
+                spawnOffset = -transform.up * offsetDistance;
             }
             else  // Player is stationary, default to right
             {
-                spawnOffset = transform.right * 1.0f;
+                spawnOffset = transform.right * offsetDistance;
             }
 
             Vector3 spawnPosition = transform.position + spawnOffset;
 
-            // Instantiate the projectile at the adjusted spawn position
-            GameObject dart = Instantiate(projectile, spawnPosition, transform.rotation);
+            // Determine the type of projectile based on the current item
+            Projectile.ProjectileType projectileType = currentItem == "Bomb" ? Projectile.ProjectileType.Bomb : Projectile.ProjectileType.Dart;
 
-            dart.AddComponent<Projectile>();
+            // Instantiate the projectile at the adjusted spawn position
+            GameObject proj = Instantiate(projectile, spawnPosition, transform.rotation);
+
+            proj.AddComponent<Projectile>();
 
             // Set the direction for the projectile based on moveDirection
             Vector2 fireDirection = moveDirection != Vector2.zero ? moveDirection : Vector2.right; // Default to right if stationary
-            dart.GetComponent<Projectile>().SetupProjectile(fireDirection, gameObject);
+            proj.GetComponent<Projectile>().SetupProjectile(fireDirection, gameObject, projectileType);
 
             // Remove the item from the inventory
             currentItem = null;

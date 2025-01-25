@@ -15,16 +15,15 @@ public class BombItem : MonoBehaviour
         // Instantiate the bomb at the player's current position
         bombInstance = Instantiate(bombPrefab, transform.position, Quaternion.identity);
 
-        // Add BoxCollider2D and other necessary components to the bomb's GameObject
+        // Add necessary components to the bomb's GameObject (e.g., Collider2D)
         BoxCollider2D boxCollider = bombInstance.AddComponent<BoxCollider2D>();
-        boxCollider.isTrigger = true;  // Set the collider as trigger if needed
+        boxCollider.isTrigger = true;  // Set the collider as trigger to detect player collisions
 
         // Optionally, add Rigidbody2D if necessary for physics-based interactions
         Rigidbody2D rb = bombInstance.AddComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
+        rb.gravityScale = 0;  // Prevent bomb from falling due to gravity
 
-        // Call Detonate after a delay
-        Invoke(nameof(Detonate), detonationTime);
+        // Bomb will be handled by Projectile.cs now for destruction and collision
     }
 
     private void Detonate()
