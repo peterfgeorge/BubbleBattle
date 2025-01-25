@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         var playerInput = GetComponent<PlayerInput>();
         Debug.Log($"Player {playerInput.playerIndex} using device: {playerInput.devices[0].displayName}");
     }
+
     // Inventory system for one item
     private string currentItem = null;
 
@@ -44,18 +45,26 @@ public class PlayerController : MonoBehaviour
         fire.action.started -= Fire;
     }
 
+    // Modified Fire function to check for item in inventory and remove item after firing
     private void Fire(InputAction.CallbackContext obj)
     {
-        Debug.Log("Fired!");
+        if (currentItem != null)
+        {
+            Debug.Log($"Fired using item: {currentItem}");
+
+            currentItem = null;
+            Debug.Log("Item used and removed from inventory.");
+        }
+        else
+        {
+            Debug.Log("Cannot fire, no item in inventory.");
+        }
     }
 
     // Function to handle inflation based on bubble count
     private void HandleInflation()
     {
-        // Calculate inflation factor based on bubble count
         float inflationFactor = Mathf.Clamp01((float)bubbleCount / 10f);  // Adjust 10f for sensitivity
-
-        // Scale the player model based on the bubble count
         transform.localScale = Vector3.one + Vector3.one * inflationFactor * (maxScale - 1f);
     }
 
@@ -85,12 +94,6 @@ public class PlayerController : MonoBehaviour
             bubbleCount = 100;
         }
     }
-
-    // Optional function to drop the current item
-    public void DropItem()
-    {
-        Debug.Log($"Dropped: {currentItem}");
-        currentItem = null;
-    }
 }
+
 

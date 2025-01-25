@@ -169,6 +169,7 @@ MonoBehaviour:
   moveSpeed: 5
   move: {fileID: 2171797127053394711, guid: 223e37bb92da3de419e187d0a4faec5d, type: 3}
   fire: {fileID: 1143532421868285531, guid: 223e37bb92da3de419e187d0a4faec5d, type: 3}
+  inflationSpeed: 0.2
 --- !u!50 &7113824099530573091
 Rigidbody2D:
   serializedVersion: 5

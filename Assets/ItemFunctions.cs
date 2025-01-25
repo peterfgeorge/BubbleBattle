@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickUpDetection : MonoBehaviour
+public class ItemFunctions : MonoBehaviour
 {
     public string itemName; // Set this in the Inspector or dynamically
     public bool isBubbleItem = false;  // Flag to check if it's a bubbles item
