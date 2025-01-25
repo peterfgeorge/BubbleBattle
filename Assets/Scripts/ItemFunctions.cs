@@ -24,6 +24,7 @@ public class ItemFunctions : MonoBehaviour
                     // Regular item pickup (inventory)
                     if (player.TryPickUpItem(itemName))
                     {
+                        player.projectile = Resources.Load("Prefabs/" + itemName, typeof(GameObject)) as GameObject;
                         Destroy(gameObject);  // Destroy the regular item after pickup
                     }
                     else

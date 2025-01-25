@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log($"Fired using item: {currentItem}");
 
             Vector3 spawnOffset;
+
             if (moveDirection.x > 0)  // Player is moving right
             {
                 spawnOffset = transform.right * 1.0f;
@@ -76,8 +77,11 @@ public class PlayerController : MonoBehaviour
             }
 
             Vector3 spawnPosition = transform.position + spawnOffset;
+
             // Instantiate the projectile at the adjusted spawn position
             GameObject dart = Instantiate(projectile, spawnPosition, transform.rotation);
+
+            dart.AddComponent<Projectile>();
 
             // Set the direction for the projectile based on moveDirection
             Vector2 fireDirection = moveDirection != Vector2.zero ? moveDirection : Vector2.right; // Default to right if stationary

@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2789901877807890706
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -68264836794118590, guid: 79a7db07ad80b7e449ea832a1168e7d8, type: 3}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520806623174888022, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: itemName
+      value: Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501496409128804154, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 19.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501496409128804154, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 19.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234928750943485252, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_Name
+      value: BombItem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6234928750943485252, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7749540498395999263}
+  m_SourcePrefab: {fileID: 100100000, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+--- !u!1 &8084333325884619862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6234928750943485252, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+  m_PrefabInstance: {fileID: 2789901877807890706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7749540498395999263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084333325884619862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2c2430f5212ba4da3ab368c3a3b595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 8579124092097160316, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
+  detonationTime: 3
