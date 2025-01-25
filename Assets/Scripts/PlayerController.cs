@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public InputActionReference move;
     public InputActionReference fire;
+    public GameObject projectile;
 
     private void Awake()
     {
@@ -52,6 +53,37 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log($"Fired using item: {currentItem}");
 
+            Vector3 spawnOffset;
+            if (moveDirection.x > 0)  // Player is moving right
+            {
+                spawnOffset = transform.right * 1.0f;
+            }
+            else if (moveDirection.x < 0)  // Player is moving left
+            {
+                spawnOffset = -transform.right * 1.0f;
+            }
+            else if (moveDirection.y > 0)  // Player is moving up
+            {
+                spawnOffset = transform.up * 1.0f;
+            }
+            else if (moveDirection.y < 0)  // Player is moving down
+            {
+                spawnOffset = -transform.up * 1.0f;
+            }
+            else  // Player is stationary, default to right
+            {
+                spawnOffset = transform.right * 1.0f;
+            }
+
+            Vector3 spawnPosition = transform.position + spawnOffset;
+            // Instantiate the projectile at the adjusted spawn position
+            GameObject dart = Instantiate(projectile, spawnPosition, transform.rotation);
+
+            // Set the direction for the projectile based on moveDirection
+            Vector2 fireDirection = moveDirection != Vector2.zero ? moveDirection : Vector2.right; // Default to right if stationary
+            dart.GetComponent<Projectile>().SetupProjectile(fireDirection, gameObject);
+
+            // Remove the item from the inventory
             currentItem = null;
             Debug.Log("Item used and removed from inventory.");
         }
@@ -60,6 +92,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Cannot fire, no item in inventory.");
         }
     }
+
+
 
     // Function to handle inflation based on bubble count
     private void HandleInflation()
@@ -93,6 +127,12 @@ public class PlayerController : MonoBehaviour
         {
             bubbleCount = 100;
         }
+    }
+
+    public void LoseBubbles(int amount)
+    {
+        bubbleCount -= amount;
+        Debug.Log($"Bubble count: {bubbleCount}");
     }
 }
 
