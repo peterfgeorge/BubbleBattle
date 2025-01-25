@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4520806623174888022, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: itemName
+      value: Darts
+      objectReference: {fileID: 0}
     - target: {fileID: 6234928750943485252, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Name
       value: Darts
