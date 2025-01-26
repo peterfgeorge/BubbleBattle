@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5fe4ee1f9f88cf346bec03eaf209669c
+guid: 8908b6a96c83622449c76654209ec026
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5339595466475353605
-    second: FlatSandField_0
+      213: -3422862526205258830
+    second: player 1 victory_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1536
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,30 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlatSandField_0
+      name: player 1 victory_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 21
-        width: 1494
-        height: 1494
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 747, y: 736}
-        - {x: 681, y: 747}
-        - {x: -741, y: 747}
-        - {x: -747, y: 696}
-        - {x: -747, y: -746}
-        - {x: -746, y: -747}
-        - {x: 747, y: -747}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: ad5db1835c2d17b4083c7abe33b4c1c6
-      internalID: -1951995300
+      spriteID: 2b31a82eaac8f70d0800000000000000
+      internalID: -3422862526205258830
       vertices: []
       indices: 
       edges: []
@@ -145,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 021877622f554de4b810327908d1fae4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -155,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FlatSandField_0: -1951995300
+      player 1 victory_0: -3422862526205258830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

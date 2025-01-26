@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5fe4ee1f9f88cf346bec03eaf209669c
+guid: a1b1e3b59c3860a4f88cd268323ed2f6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5339595466475353605
-    second: FlatSandField_0
+      213: -2972322114076167523
+    second: background_deepsea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1536
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,47 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlatSandField_0
+      name: background_deepsea_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 21
-        width: 1494
-        height: 1494
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 747, y: 736}
-        - {x: 681, y: 747}
-        - {x: -741, y: 747}
-        - {x: -747, y: 696}
-        - {x: -747, y: -746}
-        - {x: -746, y: -747}
-        - {x: 747, y: -747}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: ad5db1835c2d17b4083c7abe33b4c1c6
-      internalID: -1951995300
+      spriteID: d92b37809c030c6d0800000000000000
+      internalID: -2972322114076167523
       vertices: []
       indices: 
       edges: []
@@ -145,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 021877622f554de4b810327908d1fae4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -154,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      FlatSandField_0: -1951995300
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
