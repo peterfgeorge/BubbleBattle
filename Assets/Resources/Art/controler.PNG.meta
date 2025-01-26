@@ -972,7 +972,41 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      controler_0: 6170078746136041066
+      controler_1: -234981432430055655
+      controler_10: 7458767138220027456
+      controler_11: 3137007600567343320
+      controler_12: 2567253558900479772
+      controler_13: 8997687151493196342
+      controler_14: 1020312041647339347
+      controler_15: 778101033714970359
+      controler_16: 5995571003166036303
+      controler_17: -4136184842793565685
+      controler_18: 2712447547334519107
+      controler_19: 7621181017420673398
+      controler_2: -6488091384762451005
+      controler_20: -970083059643333194
+      controler_21: -7267175029401983316
+      controler_22: -1366544105294848134
+      controler_23: 1435617136392890191
+      controler_24: 3877006216190704985
+      controler_25: -2763063422406208015
+      controler_26: 5305156420679863697
+      controler_27: 3511548029488169103
+      controler_28: -2207884446230877717
+      controler_29: -6771265529989727211
+      controler_3: -6561403523278197750
+      controler_30: 6859339827911222122
+      controler_31: -2473688291345254868
+      controler_32: 7377566894826310376
+      controler_33: -5732841326506524163
+      controler_4: 3176598918055501686
+      controler_5: 3503839672484700056
+      controler_6: -2185567137497478744
+      controler_7: -174279022495109921
+      controler_8: 1760961977027409408
+      controler_9: 6724872060841324831
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
