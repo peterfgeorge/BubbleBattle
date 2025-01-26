@@ -43,6 +43,12 @@ public class TimerText : MonoBehaviour
 
         int minutes = (int)_backingTimerSeconds / 60;
         int seconds = (int)_backingTimerSeconds % 60;
-        _textMesh.text = _timerPrefix + "\n" + minutes + ":" + seconds;
+        _textMesh.text = _timerPrefix + "\n" + minutes + ":" + seconds.ToString("00");
+    }
+
+    public void ResetTimer()
+    {
+        _backingTimerSeconds = _startTimeSeconds;
+        _didTimerEnd = false;
     }
 }
