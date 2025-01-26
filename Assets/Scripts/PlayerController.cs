@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public InputActionReference fire;
     public GameObject projectile;
 
+    private bool isSlowed = false;
+
+
     private void Awake()
     {
         var playerInput = GetComponent<PlayerInput>();
@@ -80,6 +83,27 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void ApplySlowEffect(float speedMultiplier, float duration)
+    {
+        if (isSlowed) return; // Avoid stacking slows
+
+        isSlowed = true;
+        float originalSpeed = moveSpeed;
+        moveSpeed *= speedMultiplier; // Reduce speed by multiplier
+        Debug.Log($"Player slowed! Speed reduced to {moveSpeed} for {duration} seconds.");
+
+        // Restore the original speed after the duration
+        StartCoroutine(RemoveSlowEffect(originalSpeed, duration));
+    }
+
+    private System.Collections.IEnumerator RemoveSlowEffect(float originalSpeed, float duration)
+    {
+        yield return new WaitForSeconds(duration); // Wait for the slow duration
+        moveSpeed = originalSpeed; // Restore the original speed
+        isSlowed = false; // Allow future slows
+        Debug.Log("Player speed restored.");
+    }
+
     private void OnEnable()
     {
         fire.action.started += Fire;
@@ -125,7 +149,21 @@ public class PlayerController : MonoBehaviour
             Vector3 spawnPosition = transform.position + spawnOffset;
 
             // Determine the type of projectile based on the current item
-            Projectile.ProjectileType projectileType = currentItem == "Bomb" ? Projectile.ProjectileType.Bomb : Projectile.ProjectileType.Dart;
+            Projectile.ProjectileType projectileType;
+
+            Debug.Log("CURRENT ITEM: " + currentItem);
+            if (currentItem == "Bomb")
+            {
+                projectileType = Projectile.ProjectileType.Bomb;
+            }
+            else if(currentItem == "SeaWeed")
+            {
+                projectileType = Projectile.ProjectileType.SeaWeed;
+            }
+            else
+            {
+                projectileType = Projectile.ProjectileType.Dart;
+            }
 
             // Instantiate the projectile at the adjusted spawn position
             GameObject proj = Instantiate(projectile, spawnPosition, transform.rotation);

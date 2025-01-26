@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public enum ProjectileType { Dart, Bomb }
+    public enum ProjectileType { Dart, Bomb, SeaWeed }
 
     public float speed = 10f;        // Speed of the dart
     public int damage = 1;           // Amount of bubbles to lose per hit
@@ -35,6 +35,10 @@ public class Projectile : MonoBehaviour
         {
             // Bomb stays stationary; you can add detonation logic here
         }
+        else if (projectileType == ProjectileType.SeaWeed)
+        {
+            transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,9 +65,19 @@ public class Projectile : MonoBehaviour
                 else if (projectileType == ProjectileType.Dart)
                 {
                     // Apply damage for the Dart type (if needed)
+                    if (collision.gameObject == shooter) return;
                     Debug.Log("Dart Hit");
                     player.LoseBubbles(damage);
                     Destroy(gameObject);  // Destroy the dart after hitting the player
+                }
+                else if (projectileType == ProjectileType.SeaWeed)
+                {
+                    Debug.Log("SeaWeed Hit");
+                    if (player != null)
+                    {
+                        player.ApplySlowEffect(0.5f, 3f); // Reduce speed to 50% for 3 seconds
+                    }
+                    Destroy(gameObject);
                 }
             }
         }
