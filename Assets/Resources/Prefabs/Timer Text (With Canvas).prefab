@@ -280,7 +280,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _startTimeSeconds: 10
+  _startTimeSeconds: 60
   _timerPrefix: TIME
 --- !u!23 &5173764725517011131
 MeshRenderer:
