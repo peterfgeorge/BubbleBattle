@@ -53,12 +53,15 @@ public class Projectile : MonoBehaviour
                 // If the projectile is a Bomb, apply damage (or effect)
                 if (projectileType == ProjectileType.Bomb)
                 {
+                    Debug.Log("Bomb Hit");
+                    if (collision.gameObject == shooter) return;
                     player.LoseBubbles(damage);  // Apply damage by reducing bubbles
                     Destroy(gameObject);  // Destroy the bomb after triggering
                 }
                 else if (projectileType == ProjectileType.Dart)
                 {
                     // Apply damage for the Dart type (if needed)
+                    Debug.Log("Dart Hit");
                     player.LoseBubbles(damage);
                     Destroy(gameObject);  // Destroy the dart after hitting the player
                 }

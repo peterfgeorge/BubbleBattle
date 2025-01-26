@@ -106,4 +106,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 8579124092097160316, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
-  detonationTime: 3
+  bombInstance: {fileID: 329094262149312080, guid: b9aeac46dbf177649886ac7e74b20b2e, type: 3}

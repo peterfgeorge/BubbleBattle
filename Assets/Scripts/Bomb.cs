@@ -71,7 +71,7 @@ public class Bomb : MonoBehaviour
             Rigidbody2D rigidbody = projectile.AddComponent<Rigidbody2D>();
             rigidbody.gravityScale = 0;
 
-            boxCollider.AddComponent<ProjectileCollision>();
+            boxCollider.AddComponent<Projectile>();
 
             // Revisit later: Keeping because it caused an effect that could be exaggerated
             // rigidbody.linearVelocity = _projectileSpeed * Time.deltaTime * projectile.transform.up;

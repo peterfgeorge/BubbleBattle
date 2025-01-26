@@ -6,7 +6,6 @@ public class BombItem : MonoBehaviour
     private GameObject bombPrefab;
 
     [SerializeField]
-    private float detonationTime = 3f;
 
     private GameObject bombInstance;
 
