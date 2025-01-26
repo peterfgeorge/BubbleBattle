@@ -126,30 +126,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log($"Fired using item: {currentItem}");
 
-            Vector3 spawnOffset;
-
             float offsetDistance = transform.localScale.x * 2f;  // Multiply scale by a factor (adjust as necessary)
-        
-            if (moveInput.x > 0)  // Player is moving right
-            {
-                spawnOffset = transform.right * offsetDistance;
-            }
-            else if (moveInput.x < 0)  // Player is moving left
-            {
-                spawnOffset = -transform.right * offsetDistance;
-            }
-            else if (moveInput.y > 0)  // Player is moving up
-            {
-                spawnOffset = transform.up * offsetDistance;
-            }
-            else if (moveInput.y < 0)  // Player is moving down
-            {
-                spawnOffset = -transform.up * offsetDistance;
-            }
-            else  // Player is stationary, default to right
-            {
-                spawnOffset = transform.right * offsetDistance;
-            }
+            
+            Vector3 spawnOffset = transform.up * offsetDistance;
 
             Vector3 spawnPosition = transform.position + spawnOffset;
 
@@ -177,8 +156,8 @@ public class PlayerController : MonoBehaviour
 
             Destroy(proj.GetComponent<ItemFunctions>());
 
-            // Set the direction for the projectile based on moveInput
-            Vector2 fireDirection = moveInput != Vector2.zero ? moveInput : Vector2.right; // Default to right if stationary
+            // Set the direction for the projectile based on the player's rotation
+            Vector2 fireDirection = transform.up; // Use the player's "up" direction as the fire direction
             proj.GetComponent<Projectile>().SetupProjectile(fireDirection, gameObject, projectileType);
 
             // Remove the item from the inventory
