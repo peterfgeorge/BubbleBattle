@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isSwordFishActive = false;
 
+    private PlayerManager gameManager;
+
 
     private void Awake()
     {
@@ -338,17 +340,61 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void LoseBubbles(float amount) //need to play death animation and respawn character here
+    public void Death()
     {
-        if(bubbleCount == 0)
-        {
-            bubbleCount = 0;
-        }
-        else
-        {
-            bubbleCount = amount;
-        }
-        
+        bubbleCount = 0;
         Debug.Log($"Bubble count: {bubbleCount}");
+
+        // Disable player components
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+
+        // Start the respawn coroutine
+        StartCoroutine(RespawnPlayer());
+    }
+
+    private IEnumerator RespawnPlayer()
+    {
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+
+        // Disable all child GameObjects
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // Wait for the respawn delay (3 seconds)
+        yield return new WaitForSeconds(3f);
+
+        // Find the SpawnPoints GameObject and choose a random child spawn point
+        GameObject spawnPoints = GameObject.Find("SpawnPoints");
+        if (spawnPoints == null)
+        {
+            Debug.LogError("SpawnPoints GameObject not found!");
+            yield break;
+        }
+
+        int randomIndex = Random.Range(0, spawnPoints.transform.childCount);
+        Transform chosenSpawnPoint = spawnPoints.transform.GetChild(randomIndex);
+
+        // Move the player to the spawn point
+        transform.position = chosenSpawnPoint.position;
+
+        // Re-enable the player GameObject and all its components
+        gameObject.SetActive(true);
+
+        // Re-enable player components
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<PlayerController>().enabled = true;
+
+        // Re-enable all child GameObjects
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
     }
 }
