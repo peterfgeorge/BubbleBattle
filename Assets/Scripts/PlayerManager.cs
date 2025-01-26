@@ -89,6 +89,8 @@ public class PlayerManager : MonoBehaviour
     public void StartGame()
     {
         GameDataManager.activePlayers = activePlayers;
+        GameDataManager.playAgainGameSceneName = gameSceneName;
+        
         SceneManager.LoadScene(gameSceneName);
     }
 }

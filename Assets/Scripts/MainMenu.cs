@@ -16,18 +16,13 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayAgain() {
-        PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
-        
-        if (playerManager == null) {
-            Debug.LogError("No PlayerManager found!");
+        var gameSceneName = GameDataManager.playAgainGameSceneName;
+        if (string.IsNullOrEmpty(gameSceneName))
+        {
+            Debug.LogError("No game scene name assigned to GameDataManager!");
             return;
         }
 
-        if (playerManager.ActivePlayersCount == 0) {
-            Debug.LogWarning("No players have joined!");
-            return;
-        }
-
-        playerManager.StartGame();
+        SceneManager.LoadScene(gameSceneName);
     }
 }
