@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a1b1e3b59c3860a4f88cd268323ed2f6
+guid: 31d3dae12b761084fba9e0c9cb66aa5b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2972322114076167523
-    second: background_deepsea_0
+      213: -1867181179267402779
+    second: TitleArt_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_deepsea_0
+      name: TitleArt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d92b37809c030c6d0800000000000000
-      internalID: -2972322114076167523
+      spriteID: 5e3b8763c907616e0800000000000000
+      internalID: -1867181179267402779
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      background_deepsea_0: -2972322114076167523
+      TitleArt_0: -1867181179267402779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
