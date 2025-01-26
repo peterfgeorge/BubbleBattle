@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isSlowed = false;
 
+    private bool isSwordFishActive = false;
+
 
     private void Awake()
     {
@@ -194,6 +196,11 @@ public class PlayerController : MonoBehaviour
         fire.action.started -= Fire;
     }
 
+    public void SetSwordFishActive(bool isActive)
+    {
+        isSwordFishActive = isActive;
+    }
+
     // Modified Fire function to check for item in inventory and remove item after firing
     private void Fire(InputAction.CallbackContext obj)
     {
@@ -264,53 +271,53 @@ public class PlayerController : MonoBehaviour
     // Function to pick up an item (Inventory check)
     public bool TryPickUpItem(string itemName)
     {
+        if (isSwordFishActive)
+        {
+            Debug.Log("Cannot pick up items while SwordFish is active!");
+            return false;
+        }
+
         if (currentItem == null)
         {
             currentItem = itemName;
             Transform curProjectileTransform = transform.Find("CurProjectile");
 
-        if (curProjectileTransform != null)
-        {
-            // Get the SpriteRenderer component
-            SpriteRenderer spriteRenderer = curProjectileTransform.GetComponent<SpriteRenderer>();
-
-            if (spriteRenderer != null)
+            if (curProjectileTransform != null)
             {
-                // Search for the prefab in the "Prefabs" folder
-                GameObject prefab = Resources.Load<GameObject>($"Prefabs/{itemName}");
+                SpriteRenderer spriteRenderer = curProjectileTransform.GetComponent<SpriteRenderer>();
 
-                if (prefab != null)
+                if (spriteRenderer != null)
                 {
-                    // Get the SpriteRenderer component from the prefab
-                    SpriteRenderer prefabSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
+                    GameObject prefab = Resources.Load<GameObject>($"Prefabs/{itemName}");
 
-                    if (prefabSpriteRenderer != null)
+                    if (prefab != null)
                     {
-                        // Assign the prefab's sprite to the current SpriteRenderer
-                        spriteRenderer.sprite = prefabSpriteRenderer.sprite;
+                        SpriteRenderer prefabSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
 
-                        // Resize the sprite to 50% of its original size
-                        curProjectileTransform.localScale = new Vector3(0.5f, 0.5f, 1f); // Assuming original scale is (1,1,1)
+                        if (prefabSpriteRenderer != null)
+                        {
+                            spriteRenderer.sprite = prefabSpriteRenderer.sprite;
+                            curProjectileTransform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                        }
+                        else
+                        {
+                            Debug.LogError($"Prefab {itemName} does not have a SpriteRenderer!");
+                        }
                     }
                     else
                     {
-                        Debug.LogError($"Prefab {itemName} does not have a SpriteRenderer!");
+                        Debug.LogError($"Prefab {itemName} not found in Prefabs folder!");
                     }
                 }
                 else
                 {
-                    Debug.LogError($"Prefab {itemName} not found in Prefabs folder!");
+                    Debug.LogError("CurProjectile does not have a SpriteRenderer!");
                 }
             }
             else
             {
-                Debug.LogError("CurProjectile does not have a SpriteRenderer!");
+                Debug.LogError("CurProjectile child GameObject not found!");
             }
-        }
-        else
-        {
-            Debug.LogError("CurProjectile child GameObject not found!");
-        }
             return true;
         }
 
