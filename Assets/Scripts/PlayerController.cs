@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float deceleration = 5f;
     private Vector2 moveInput;  // Stores input from left stick
     private Vector2 rotateInput;  // Stores input from right stick
-    private Vector2 currentVelocity;
+    private float currentSpeed = 0f;
 
     public InputActionReference move;
     public InputActionReference fire;
@@ -54,12 +54,36 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Handle movement (forward/backward)
-        Vector2 forwardMovement = transform.up * moveInput.y * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + forwardMovement);
+        HandleMovement();
+        HandleRotation();
+    }
 
-        // Handle rotation (left/right)
+    private void HandleMovement()
+    {
+        // Determine the target speed based on the Y-axis of the move input
+        float targetSpeed = moveInput.y * moveSpeed;
+
+        // Gradually adjust current speed towards the target speed
+        if (Mathf.Abs(targetSpeed) > 0.1f) // If there's input, accelerate
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.fixedDeltaTime);
+        }
+        else // If no input, decelerate to zero
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
+        }
+
+        // Apply movement in the character's forward direction (based on rotation)
+        Vector2 forwardMovement = transform.up * currentSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + forwardMovement);
+    }
+
+    private void HandleRotation()
+    {
+        // Rotate the character based on the X-axis of the rotate input
         float rotationAmount = -rotateInput.x * rotationSpeed * Time.fixedDeltaTime;
+
+        // Apply rotation around the Z-axis (2D rotation)
         rb.MoveRotation(rb.rotation + rotationAmount);
     }
 

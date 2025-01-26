@@ -372,8 +372,8 @@ MonoBehaviour:
   rb: {fileID: 7113824099530573091}
   moveSpeed: 5
   rotationSpeed: 200
-  acceleration: 5
-  deceleration: 5
+  acceleration: 10
+  deceleration: 4
   move: {fileID: 2171797127053394711, guid: 223e37bb92da3de419e187d0a4faec5d, type: 3}
   fire: {fileID: 1143532421868285531, guid: 223e37bb92da3de419e187d0a4faec5d, type: 3}
   projectile: {fileID: 329094262149312080, guid: b9aeac46dbf177649886ac7e74b20b2e, type: 3}
