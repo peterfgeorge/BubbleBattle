@@ -14,4 +14,20 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+    public void PlayAgain() {
+        PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
+        
+        if (playerManager == null) {
+            Debug.LogError("No PlayerManager found!");
+            return;
+        }
+
+        if (playerManager.ActivePlayersCount == 0) {
+            Debug.LogWarning("No players have joined!");
+            return;
+        }
+
+        playerManager.StartGame();
+    }
 }

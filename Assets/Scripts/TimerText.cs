@@ -25,10 +25,16 @@ public class TimerText : MonoBehaviour
         _backingTimerSeconds = _startTimeSeconds;
     }
 
+    void Start() {
+        ResetTimer();
+    }
+
     void Update()
     {
         if (_didTimerEnd)
         {
+            OnTimerEnd?.Invoke();
+            gameObject.SetActive(false);
             return;
         }
 
@@ -37,9 +43,6 @@ public class TimerText : MonoBehaviour
         {
             _textMesh.text = _timerPrefix + "\n 0:00";
             _didTimerEnd = true;
-            
-            OnTimerEnd?.Invoke();
-            gameObject.SetActive(false);
             return;
         }
 

@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager manager;
     private int index = 0;
 
+    // Get activePlayers count with a getter
+    public int ActivePlayersCount => activePlayers.Count;
+
     void Start()
     {
         manager = GetComponent<PlayerInputManager>();
