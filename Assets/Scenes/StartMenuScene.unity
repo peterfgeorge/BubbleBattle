@@ -1374,7 +1374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: gameSceneName.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: unreadyPanels.Array.size
@@ -1398,7 +1398,7 @@ PrefabInstance:
       objectReference: {fileID: 1809027227}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: 'gameSceneName.Array.data[0]'
-      value: BottomOfTheSea
+      value: BottomOfTheSeaLevel
       objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: 'gameSceneName.Array.data[1]'
@@ -1407,6 +1407,14 @@ PrefabInstance:
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: 'gameSceneName.Array.data[2]'
       value: UnderTheSea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: 'gameSceneName.Array.data[3]'
+      value: Shoreline
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: 'gameSceneName.Array.data[4]'
+      value: GreatReef
       objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: 'unreadyPanels.Array.data[0]'
