@@ -7,6 +7,9 @@ public class GameOver : MonoBehaviour {
     [SerializeField]
     private GameObject[] _gameOverSprites;
 
+    // Constant for restarting game
+    private const int _restartTime = 3;
+
     // Show Winner Panel with the corresponding sprite from _gameOverSprites
     public void ShowWinner() {
         gameObject.SetActive(true);
@@ -20,8 +23,9 @@ public class GameOver : MonoBehaviour {
 
             _gameOverSprites[winner.PlayerIndex].SetActive(true);
         } else {
-            Debug.LogError("No winner found!");
+            Debug.LogWarning("No winner found!");
         }
+        RestartGame();
     }
 
     private void HideLosers(PlayerController winner) {
@@ -35,6 +39,11 @@ public class GameOver : MonoBehaviour {
         }
     }
 
+    // Wait a few seconds and then call the PlayAgain() function
+    public void RestartGame() {
+        Debug.Log("RESTARTING GAME");
+        Invoke("PlayAgain", _restartTime);
+    }
     
     private PlayerController GetWinner()
     {
@@ -58,5 +67,32 @@ public class GameOver : MonoBehaviour {
             Debug.Log($"Player {winningPlayer.name} wins with {highestBubbleCount} bubbles!");
         }
         return winningPlayer;
+    }
+
+    public void PlayAgain() {
+        Debug.Log("Play again called");
+        PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
+        
+        if (playerManager == null) {
+            Debug.LogError("No PlayerManager found!");
+            return;
+        }
+
+        if (playerManager.ActivePlayersCount == 0) {
+            Debug.LogWarning("No players have joined!");
+            return;
+        }
+
+        // Get players from playerManager and run Death() on each
+        foreach (GameObject player in playerManager.ActivePlayers) {
+            if (!player.TryGetComponent<PlayerController>(out var pc)) {
+                Debug.LogError("PlayerController not found on player!");
+                return;
+            }
+            
+            pc.Death();
+        }
+
+        playerManager.StartGame();
     }
 }
