@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 79a7db07ad80b7e449ea832a1168e7d8
+guid: b4a47a064f9413e44a54c1f2b70ee1a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -68264836794118590
-    second: item_puffbomb_0
+      213: -9223337412464836885
+    second: Item_Dart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: item_puffbomb_0
+      name: Item_Dart_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 16
-        width: 1968
-        height: 1967
+        x: 71
+        y: 3
+        width: 115
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24e8c3c1e797d0ff0800000000000000
-      internalID: -68264836794118590
+      spriteID: bee767e9d7f100080800000000000000
+      internalID: -9223337412464836885
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      item_puffbomb_0: -68264836794118590
+      Item_Dart_0: -9223337412464836885
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

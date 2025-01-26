@@ -2,24 +2,46 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public enum ProjectileType { Dart, Bomb, SeaWeed }
+    public enum ProjectileType { Dart, Bomb, SeaWeed, SwordFish }
 
     public float speed = 10f;        // Speed of the dart
     public int damage = 1;           // Amount of bubbles to lose per hit
+    
+    public float rotationSpeed = 0.8f;
+
     private Vector2 direction;       // Direction the projectile will travel
     private GameObject shooter;      // Reference to the player that fired the projectile
     private ProjectileType projectileType = ProjectileType.Dart; // Default type is Dart
 
+    private Transform player;        // Reference to the player for SwordFish rotation
+    private float rotationAngle;     // Current angle of rotation for SwordFish
+    private float rotationRadius = 2.0f; // Distance from the player for SwordFish
+
     public void SetupProjectile(Vector2 fireDirection, GameObject firingPlayer, ProjectileType type)
     {
         direction = fireDirection.normalized;
-        shooter = firingPlayer; // Store the player that fired the projectile
-        projectileType = type;  // Set the type of projectile (Dart or Bomb)
+        shooter = firingPlayer;
+        projectileType = type;
+        player = firingPlayer.transform;
 
-        // If it's a bomb, start a timer to destroy it after 3 seconds
+        if (projectileType == ProjectileType.SwordFish)
+        {
+            // Notify the PlayerController that the SwordFish is active
+            firingPlayer.GetComponent<PlayerController>().SetSwordFishActive(true);
+        }
+
         if (projectileType == ProjectileType.Bomb)
         {
-            Destroy(gameObject, 6f);  // Bomb will destroy itself after 6 seconds
+            Destroy(gameObject, 6f);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (projectileType == ProjectileType.SwordFish && shooter != null)
+        {
+            // Notify the PlayerController that the SwordFish is no longer active
+            shooter.GetComponent<PlayerController>().SetSwordFishActive(false);
         }
     }
 
@@ -38,6 +60,18 @@ public class Projectile : MonoBehaviour
         else if (projectileType == ProjectileType.SeaWeed)
         {
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        }
+        else if (projectileType == ProjectileType.SwordFish)
+        {
+            if (player != null)
+            {
+                // Rotate around the player
+                rotationAngle += rotationSpeed * speed * Time.deltaTime; // Increment the angle over time
+                float x = player.position.x + Mathf.Cos(rotationAngle) * rotationRadius;
+                float y = player.position.y + Mathf.Sin(rotationAngle) * rotationRadius;
+
+                transform.position = new Vector3(x, y, transform.position.z);
+            }
         }
     }
 
@@ -58,7 +92,6 @@ public class Projectile : MonoBehaviour
                 if (projectileType == ProjectileType.Bomb)
                 {
                     Debug.Log("Bomb Hit");
-                    if (collision.gameObject == shooter) return;
                     player.LoseBubbles(damage);  // Apply damage by reducing bubbles
                     Destroy(gameObject);  // Destroy the bomb after triggering
                 }
@@ -78,6 +111,13 @@ public class Projectile : MonoBehaviour
                         player.ApplySlowEffect(0.5f, 3f); // Reduce speed to 50% for 3 seconds
                     }
                     Destroy(gameObject);
+                }
+                else if (projectileType == ProjectileType.SwordFish)
+                {
+                    // Apply damage for the Dart type (if needed)
+                    Debug.Log("SwordFish Hit");
+                    player.LoseBubbles(damage);
+                    Destroy(gameObject);  // Destroy the dart after hitting the player
                 }
             }
         }
