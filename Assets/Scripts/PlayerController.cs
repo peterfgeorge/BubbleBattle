@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
     public float rotationSpeed = 200f;
+    private Vector3 targetScale; // The desired scale based on bubble count
+    private float smoothSpeed = 5f; // The speed at which scaling occurs
 
     public float acceleration = 5f;  // The rate of acceleration
     public float deceleration = 5f;
@@ -30,14 +32,16 @@ public class PlayerController : MonoBehaviour
     private string currentItem = null;
 
     // Bubble count (score) and inflation settings
-    private int bubbleCount = 0;  // Tracks the number of bubbles
+    private float bubbleCount = 0;  // Tracks the number of bubbles
     public float inflationSpeed = 0.1f;  // How fast the player inflates
+    public float inflationSensitivity = 10f;
     private float maxScale = 2f;  // Max inflation scale (adjust as needed)
 
     private void Update()
     {
         moveInput = move.action.ReadValue<Vector2>();
         HandleInflation();  // Call to manage the inflation based on bubble count
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * smoothSpeed);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -175,11 +179,11 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // Function to handle inflation based on bubble count
     private void HandleInflation()
     {
-        float inflationFactor = Mathf.Clamp01((float)bubbleCount / 10f);  // Adjust 10f for sensitivity
-        transform.localScale = Vector3.one + Vector3.one * inflationFactor * (maxScale - 1f);
+        // Calculate the target scale based on bubble count
+        float inflationFactor = Mathf.Clamp01((float)bubbleCount / (float)inflationSensitivity); // Adjust 10f for sensitivity
+        targetScale = Vector3.one + Vector3.one * inflationFactor * (maxScale - 1f);
     }
 
     // Function to pick up an item (Inventory check)
@@ -240,7 +244,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Function to add bubbles (increases bubble count)
-    public void AddBubbles(int count)
+    public void AddBubbles(float count)
     {
         bubbleCount += count;
         Debug.Log($"Bubble count: {bubbleCount}");
@@ -252,7 +256,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void LoseBubbles(int amount)
+    public void LoseBubbles(float amount)
     {
         if(bubbleCount == 0)
         {
