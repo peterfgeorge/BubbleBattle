@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float moveSpeed = 5f;
+    public float moveSpeed { get; private set; }
     public float rotationSpeed = 200f;
+    private Vector3 targetScale; // The desired scale based on bubble count
+    private float smoothSpeed = 5f; // The speed at which scaling occurs
 
     public float acceleration = 5f;  // The rate of acceleration
     public float deceleration = 5f;
@@ -19,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isSlowed = false;
 
+    private bool isSwordFishActive = false;
+
 
     private void Awake()
     {
@@ -26,18 +31,30 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player {playerInput.playerIndex} using device: {playerInput.devices[0].displayName}");
     }
 
+    private void Start() {
+        moveSpeed = normalSpeed;
+    }
+
     // Inventory system for one item
     private string currentItem = null;
 
     // Bubble count (score) and inflation settings
-    private int bubbleCount = 0;  // Tracks the number of bubbles
     public float inflationSpeed = 0.1f;  // How fast the player inflates
+    public float inflationSensitivity = 10f;
     private float maxScale = 2f;  // Max inflation scale (adjust as needed)
+
+    [SerializeField] private float bubbleCount = 0; // Starting bubbles
+    [SerializeField] private float dashSpeed = 9f;    // Speed during dash
+    [SerializeField] private float normalSpeed = 5f;  // Normal player speed
+    [SerializeField] private float bubbleLossRate = .25f; // Bubbles lost per second while dashing
+    private bool isDashing = false;  // Tracks if the player is dashing
+    private Coroutine dashCoroutine;
 
     private void Update()
     {
         moveInput = move.action.ReadValue<Vector2>();
         HandleInflation();  // Call to manage the inflation based on bubble count
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * smoothSpeed);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -50,6 +67,66 @@ public class PlayerController : MonoBehaviour
     {
         // Read input from the right stick (X-axis for rotation)
         rotateInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.started) // When the dash button is pressed
+        {
+            StartDash();
+        }
+        else if (context.canceled) // When the dash button is released
+        {
+            StopDash();
+        }
+    }
+
+    private void StartDash()
+    {
+        if (isDashing) return;
+
+        isDashing = true;
+        moveSpeed = dashSpeed;
+
+        // Start losing bubbles over time
+        if (dashCoroutine != null) StopCoroutine(dashCoroutine);
+        dashCoroutine = StartCoroutine(DashCoroutine());
+    }
+
+    private void StopDash()
+    {
+        if (!isDashing) return;
+
+        isDashing = false;
+        moveSpeed = normalSpeed;
+
+        // Stop losing bubbles
+        if (dashCoroutine != null)
+        {
+            StopCoroutine(dashCoroutine);
+            dashCoroutine = null;
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        while (isDashing)
+        {
+            // Gradually reduce bubbles over time
+            float bubblesToLose = bubbleLossRate * Time.deltaTime; // Scaled by frame time
+            Debug.Log($"Bubbles to lose: {bubblesToLose}");
+            bubbleCount = bubbleCount - bubblesToLose;
+
+            Debug.Log($"Bubble count: {bubbleCount}");
+
+            // If bubbles run out, stop the dash
+            if (bubbleCount <= 0)
+            {
+                StopDash();
+            }
+
+            yield return null; // Wait for the next frame
+        }
     }
 
     private void FixedUpdate()
@@ -119,6 +196,11 @@ public class PlayerController : MonoBehaviour
         fire.action.started -= Fire;
     }
 
+    public void SetSwordFishActive(bool isActive)
+    {
+        isSwordFishActive = isActive;
+    }
+
     // Modified Fire function to check for item in inventory and remove item after firing
     private void Fire(InputAction.CallbackContext obj)
     {
@@ -179,63 +261,63 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // Function to handle inflation based on bubble count
     private void HandleInflation()
     {
-        float inflationFactor = Mathf.Clamp01((float)bubbleCount / 10f);  // Adjust 10f for sensitivity
-        transform.localScale = Vector3.one + Vector3.one * inflationFactor * (maxScale - 1f);
+        // Calculate the target scale based on bubble count
+        float inflationFactor = Mathf.Clamp01((float)bubbleCount / (float)inflationSensitivity); // Adjust 10f for sensitivity
+        targetScale = Vector3.one + Vector3.one * inflationFactor * (maxScale - 1f);
     }
 
     // Function to pick up an item (Inventory check)
     public bool TryPickUpItem(string itemName)
     {
+        if (isSwordFishActive)
+        {
+            Debug.Log("Cannot pick up items while SwordFish is active!");
+            return false;
+        }
+
         if (currentItem == null)
         {
             currentItem = itemName;
             Transform curProjectileTransform = transform.Find("CurProjectile");
 
-        if (curProjectileTransform != null)
-        {
-            // Get the SpriteRenderer component
-            SpriteRenderer spriteRenderer = curProjectileTransform.GetComponent<SpriteRenderer>();
-
-            if (spriteRenderer != null)
+            if (curProjectileTransform != null)
             {
-                // Search for the prefab in the "Prefabs" folder
-                GameObject prefab = Resources.Load<GameObject>($"Prefabs/{itemName}");
+                SpriteRenderer spriteRenderer = curProjectileTransform.GetComponent<SpriteRenderer>();
 
-                if (prefab != null)
+                if (spriteRenderer != null)
                 {
-                    // Get the SpriteRenderer component from the prefab
-                    SpriteRenderer prefabSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
+                    GameObject prefab = Resources.Load<GameObject>($"Prefabs/{itemName}");
 
-                    if (prefabSpriteRenderer != null)
+                    if (prefab != null)
                     {
-                        // Assign the prefab's sprite to the current SpriteRenderer
-                        spriteRenderer.sprite = prefabSpriteRenderer.sprite;
+                        SpriteRenderer prefabSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
 
-                        // Resize the sprite to 50% of its original size
-                        curProjectileTransform.localScale = new Vector3(0.5f, 0.5f, 1f); // Assuming original scale is (1,1,1)
+                        if (prefabSpriteRenderer != null)
+                        {
+                            spriteRenderer.sprite = prefabSpriteRenderer.sprite;
+                            curProjectileTransform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                        }
+                        else
+                        {
+                            Debug.LogError($"Prefab {itemName} does not have a SpriteRenderer!");
+                        }
                     }
                     else
                     {
-                        Debug.LogError($"Prefab {itemName} does not have a SpriteRenderer!");
+                        Debug.LogError($"Prefab {itemName} not found in Prefabs folder!");
                     }
                 }
                 else
                 {
-                    Debug.LogError($"Prefab {itemName} not found in Prefabs folder!");
+                    Debug.LogError("CurProjectile does not have a SpriteRenderer!");
                 }
             }
             else
             {
-                Debug.LogError("CurProjectile does not have a SpriteRenderer!");
+                Debug.LogError("CurProjectile child GameObject not found!");
             }
-        }
-        else
-        {
-            Debug.LogError("CurProjectile child GameObject not found!");
-        }
             return true;
         }
 
@@ -244,7 +326,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Function to add bubbles (increases bubble count)
-    public void AddBubbles(int count)
+    public void AddBubbles(float count)
     {
         bubbleCount += count;
         Debug.Log($"Bubble count: {bubbleCount}");
@@ -256,7 +338,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void LoseBubbles(int amount)
+    public void LoseBubbles(float amount) //need to play death animation and respawn character here
     {
         if(bubbleCount == 0)
         {
@@ -264,11 +346,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            bubbleCount -= amount;
+            bubbleCount = amount;
         }
         
         Debug.Log($"Bubble count: {bubbleCount}");
     }
 }
-
-
