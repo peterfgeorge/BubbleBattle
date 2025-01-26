@@ -58,3 +58,7 @@ MonoBehaviour:
   spawnAreaMin: {x: -11, y: -4.5}
   spawnAreaMax: {x: 11, y: 5}
   spawnInterval: 3
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  spawnCheckRadius: 0.5
