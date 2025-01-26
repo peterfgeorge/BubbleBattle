@@ -17,6 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: bc52ca968e1abda4f8baebfe99abcec3
+  - enabled: 1
+    path: Assets/Scenes/Levels/UnderTheSea.unity
+    guid: d8d4352fe0338f6449b33ad4edfc345f
+  - enabled: 1
+    path: Assets/Scenes/Levels/ShipWreck.unity
+    guid: 4f023fc5492cc0543abcd7ab7c7647e2
+  - enabled: 1
+    path: Assets/Scenes/Levels/BottomOfTheSeaLevel.unity
+    guid: 8fdca81d8b42eb04d93e31bd18a9ecf0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
