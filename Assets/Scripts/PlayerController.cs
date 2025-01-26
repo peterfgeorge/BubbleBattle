@@ -5,7 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
+    public float rotationSpeed = 5f;
+
+    public float acceleration = 5f;  // The rate of acceleration
+    public float deceleration = 5f;
     private Vector2 moveDirection;
+    private Vector2 currentVelocity;
 
     public InputActionReference move;
     public InputActionReference fire;
@@ -33,8 +38,47 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        // If moving, gradually accelerate towards the target direction
+        if (moveDirection != Vector2.zero)
+        {
+            // We calculate movement based on the direction the character is facing (transform.up)
+            Vector2 forwardDirection = transform.up;  // 'Up' is the character's facing direction
+
+            // Move towards the "top" of the character (forward)
+            if (moveDirection.y > 0)  // Moving upwards in the control scheme
+            {
+                // Accelerate towards the forward direction
+                currentVelocity = Vector2.Lerp(currentVelocity, forwardDirection * moveSpeed, acceleration * Time.fixedDeltaTime);
+            }
+            // Move away from the "top" of the character (backward)
+            else if (moveDirection.y < 0)  // Moving downwards in the control scheme
+            {
+                // Accelerate away from the forward direction (negative velocity)
+                currentVelocity = Vector2.Lerp(currentVelocity, -forwardDirection * moveSpeed, acceleration * Time.fixedDeltaTime);
+            }
+
+            // Handle rotation based on horizontal movement (left/right)
+            if (moveDirection.x > 0)  // Moving right
+            {
+                // Rotate constantly to face right (0 degrees)
+                transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);  // Rotate counter-clockwise at a constant speed
+            }
+            else if (moveDirection.x < 0)  // Moving left
+            {
+                // Rotate constantly to face left (180 degrees)
+                transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);  // Rotate clockwise at a constant speed
+            }
+        }
+        else
+        {
+            // If no input, gradually decelerate to zero
+            currentVelocity = Vector2.Lerp(currentVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+        }
+
+        // Apply the velocity to the rigidbody
+        rb.linearVelocity = currentVelocity;
     }
+
 
     private void OnEnable()
     {
