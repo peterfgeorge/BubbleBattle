@@ -51,6 +51,10 @@ MonoBehaviour:
     spawnChance: 1
   - prefab: {fileID: 8084333325884619862, guid: c5af1a77e6ba6d945a1fe4d9bd57fe92, type: 3}
     spawnChance: 1
+  - prefab: {fileID: 5726867021174548807, guid: d88c15a181f644440b4d8c3210367313, type: 3}
+    spawnChance: 1
+  - prefab: {fileID: 5210190139754401374, guid: 146fd5d2ae063474a8099d69f32a3bad, type: 3}
+    spawnChance: 1
   spawnAreaMin: {x: -11, y: -4.5}
   spawnAreaMax: {x: 11, y: 5}
   spawnInterval: 3
