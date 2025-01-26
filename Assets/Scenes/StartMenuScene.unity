@@ -1374,6 +1374,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: gameSceneName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: unreadyPanels.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1393,6 +1397,18 @@ PrefabInstance:
       propertyPath: 'readyPanels.Array.data[3]'
       value: 
       objectReference: {fileID: 1809027227}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: 'gameSceneName.Array.data[0]'
+      value: BottomOfTheSea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: 'gameSceneName.Array.data[1]'
+      value: ShipWreck
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: 'gameSceneName.Array.data[2]'
+      value: UnderTheSea
+      objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: 'unreadyPanels.Array.data[0]'
       value: 
