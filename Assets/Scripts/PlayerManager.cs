@@ -50,9 +50,11 @@ public class PlayerManager : MonoBehaviour
         // Activate the corresponding unready panel
         unreadyPanels[index].SetActive(false);
         readyPanels[index].SetActive(true);
-        SpriteRenderer playerSpriteRenderer = players[index].GetComponent<SpriteRenderer>();
+        
+        Transform artTransform = players[index].transform.Find("Art");
+        SpriteRenderer artSpriteRenderer = artTransform.GetComponent<SpriteRenderer>();
         Image panelImage = readyPanels[index].transform.Find("Image")?.GetComponent<Image>();
-        panelImage.color = playerSpriteRenderer.color;
+        panelImage.sprite = artSpriteRenderer.sprite;
 
         // Increment index and wrap around
         index = (index + 1) % players.Count;
