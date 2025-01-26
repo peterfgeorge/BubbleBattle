@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
+      propertyPath: items.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 8084333325884619862, guid: c5af1a77e6ba6d945a1fe4d9bd57fe92, type: 3}
     - target: {fileID: 7014223345811279836, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5687332

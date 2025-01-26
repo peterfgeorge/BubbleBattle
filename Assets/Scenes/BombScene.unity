@@ -353,13 +353,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 179790099983100962, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
+      propertyPath: _projectileSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8189404341674068699, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189404341674068699, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189404341674068699, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -391,6 +395,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189404341674068699, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189404341674068699, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8579124092097160316, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
