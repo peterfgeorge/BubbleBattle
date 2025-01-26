@@ -35103,19 +35103,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: spawnAreaMax.x
-      value: 16
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: spawnAreaMax.y
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: spawnAreaMin.x
-      value: -16
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: spawnAreaMin.y
-      value: -8
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 7014223345811279836, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: m_LocalPosition.x
