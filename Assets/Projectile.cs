@@ -26,6 +26,9 @@ public class Projectile : MonoBehaviour
         {
             // Notify the PlayerController that the SwordFish is active
             firingPlayer.GetComponent<PlayerController>().SetSwordFishActive(true);
+
+            // Dynamically adjust the swordfish rotation radius based on player size
+            rotationRadius = firingPlayer.transform.localScale.x * 2f; // Multiply scale factor to ensure it is not too close
         }
 
         if (projectileType == ProjectileType.Bomb)
@@ -33,6 +36,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject, 6f);
         }
     }
+
 
     private void OnDestroy()
     {
