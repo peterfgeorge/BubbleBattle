@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
     public Rigidbody2D rb;
     public float moveSpeed { get; private set; }
     public float rotationSpeed = 200f;
@@ -31,10 +32,12 @@ public class PlayerController : MonoBehaviour
     {
         var playerInput = GetComponent<PlayerInput>();
         Debug.Log($"Player {playerInput.playerIndex} using device: {playerInput.devices[0].displayName}");
+        
     }
 
     private void Start() {
         moveSpeed = normalSpeed;
+        
     }
 
     // Inventory system for one item
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        animator.SetBool("OnProjectileHit", false);
         moveInput = move.action.ReadValue<Vector2>();
         HandleInflation();  // Call to manage the inflation based on bubble count
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * smoothSpeed);
@@ -342,6 +346,7 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
+        animator.SetBool("OnProjectileHit", true);
         bubbleCount = 0;
         Debug.Log($"Bubble count: {bubbleCount}");
 
@@ -356,6 +361,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator RespawnPlayer()
     {
+        animator.SetBool("OnProjectileHit", false);
         GetComponent<Renderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
