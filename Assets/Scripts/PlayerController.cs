@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float moveSpeed = 5f;
+    public float moveSpeed { get; private set; }
     public float rotationSpeed = 200f;
     private Vector3 targetScale; // The desired scale based on bubble count
     private float smoothSpeed = 5f; // The speed at which scaling occurs
@@ -28,14 +29,24 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player {playerInput.playerIndex} using device: {playerInput.devices[0].displayName}");
     }
 
+    private void Start() {
+        moveSpeed = normalSpeed;
+    }
+
     // Inventory system for one item
     private string currentItem = null;
 
     // Bubble count (score) and inflation settings
-    private float bubbleCount = 0;  // Tracks the number of bubbles
     public float inflationSpeed = 0.1f;  // How fast the player inflates
     public float inflationSensitivity = 10f;
     private float maxScale = 2f;  // Max inflation scale (adjust as needed)
+
+    [SerializeField] private float bubbleCount = 0; // Starting bubbles
+    [SerializeField] private float dashSpeed = 9f;    // Speed during dash
+    [SerializeField] private float normalSpeed = 5f;  // Normal player speed
+    [SerializeField] private float bubbleLossRate = .25f; // Bubbles lost per second while dashing
+    private bool isDashing = false;  // Tracks if the player is dashing
+    private Coroutine dashCoroutine;
 
     private void Update()
     {
@@ -54,6 +65,66 @@ public class PlayerController : MonoBehaviour
     {
         // Read input from the right stick (X-axis for rotation)
         rotateInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.started) // When the dash button is pressed
+        {
+            StartDash();
+        }
+        else if (context.canceled) // When the dash button is released
+        {
+            StopDash();
+        }
+    }
+
+    private void StartDash()
+    {
+        if (isDashing) return;
+
+        isDashing = true;
+        moveSpeed = dashSpeed;
+
+        // Start losing bubbles over time
+        if (dashCoroutine != null) StopCoroutine(dashCoroutine);
+        dashCoroutine = StartCoroutine(DashCoroutine());
+    }
+
+    private void StopDash()
+    {
+        if (!isDashing) return;
+
+        isDashing = false;
+        moveSpeed = normalSpeed;
+
+        // Stop losing bubbles
+        if (dashCoroutine != null)
+        {
+            StopCoroutine(dashCoroutine);
+            dashCoroutine = null;
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        while (isDashing)
+        {
+            // Gradually reduce bubbles over time
+            float bubblesToLose = bubbleLossRate * Time.deltaTime; // Scaled by frame time
+            Debug.Log($"Bubbles to lose: {bubblesToLose}");
+            bubbleCount = bubbleCount - bubblesToLose;
+
+            Debug.Log($"Bubble count: {bubbleCount}");
+
+            // If bubbles run out, stop the dash
+            if (bubbleCount <= 0)
+            {
+                StopDash();
+            }
+
+            yield return null; // Wait for the next frame
+        }
     }
 
     private void FixedUpdate()
@@ -260,7 +331,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void LoseBubbles(float amount)
+    public void LoseBubbles(float amount) //need to play death animation and respawn character here
     {
         if(bubbleCount == 0)
         {
@@ -268,11 +339,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            bubbleCount -= amount;
+            bubbleCount = amount;
         }
         
         Debug.Log($"Bubble count: {bubbleCount}");
     }
 }
-
-
