@@ -26,6 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/BottomOfTheSeaLevel.unity
     guid: 8fdca81d8b42eb04d93e31bd18a9ecf0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Shoreline.unity
+    guid: a339848fdcdfe75499c958914a0b22c9
+  - enabled: 1
+    path: Assets/Scenes/Levels/GreatReef.unity
+    guid: 4aa302c607a3b1b49b718e6d21af2eec
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
