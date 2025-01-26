@@ -18,7 +18,16 @@
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "2a5332ae-06c1-475e-b2e3-fb2031b10dc3",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rotate",
+                    "type": "PassThrough",
+                    "id": "38c01f93-f794-4601-a268-24318a770144",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -92,24 +101,46 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "5af5cfcb-eee8-4bc8-8b96-ba8e40f86b32",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "f21fa465-eb6a-4efd-9b5d-330cc7abb885",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "left",
-                    "id": "3d5ac688-2a77-4d76-b783-a5867c7f7708",
+                    "id": "beff6894-2b04-428e-b3ec-c6e002e1e303",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "9958bd87-d6b9-4aea-9327-9bca34758cd7",
+                    "id": "8034dc6f-be28-400b-9efd-ce902287a91a",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

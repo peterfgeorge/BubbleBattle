@@ -5,11 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 200f;
 
     public float acceleration = 5f;  // The rate of acceleration
     public float deceleration = 5f;
-    private Vector2 moveDirection;
+    private Vector2 moveInput;  // Stores input from left stick
+    private Vector2 rotateInput;  // Stores input from right stick
     private Vector2 currentVelocity;
 
     public InputActionReference move;
@@ -35,51 +36,31 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        moveDirection = move.action.ReadValue<Vector2>();
+        moveInput = move.action.ReadValue<Vector2>();
         HandleInflation();  // Call to manage the inflation based on bubble count
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        // Read input from the left stick (Y-axis for forward/backward movement)
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnRotate(InputAction.CallbackContext context)
+    {
+        // Read input from the right stick (X-axis for rotation)
+        rotateInput = context.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        // If moving, gradually accelerate towards the target direction
-        if (moveDirection != Vector2.zero)
-        {
-            // We calculate movement based on the direction the character is facing (transform.up)
-            Vector2 forwardDirection = transform.up;  // 'Up' is the character's facing direction
+        // Handle movement (forward/backward)
+        Vector2 forwardMovement = transform.up * moveInput.y * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + forwardMovement);
 
-            // Move towards the "top" of the character (forward)
-            if (moveDirection.y > 0)  // Moving upwards in the control scheme
-            {
-                // Accelerate towards the forward direction
-                currentVelocity = Vector2.Lerp(currentVelocity, forwardDirection * moveSpeed, acceleration * Time.fixedDeltaTime);
-            }
-            // Move away from the "top" of the character (backward)
-            else if (moveDirection.y < 0)  // Moving downwards in the control scheme
-            {
-                // Accelerate away from the forward direction (negative velocity)
-                currentVelocity = Vector2.Lerp(currentVelocity, -forwardDirection * moveSpeed, acceleration * Time.fixedDeltaTime);
-            }
-
-            // Handle rotation based on horizontal movement (left/right)
-            if (moveDirection.x > 0)  // Moving right
-            {
-                // Rotate constantly to face right (0 degrees)
-                transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);  // Rotate counter-clockwise at a constant speed
-            }
-            else if (moveDirection.x < 0)  // Moving left
-            {
-                // Rotate constantly to face left (180 degrees)
-                transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);  // Rotate clockwise at a constant speed
-            }
-        }
-        else
-        {
-            // If no input, gradually decelerate to zero
-            currentVelocity = Vector2.Lerp(currentVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
-        }
-
-        // Apply the velocity to the rigidbody
-        rb.linearVelocity = currentVelocity;
+        // Handle rotation (left/right)
+        float rotationAmount = -rotateInput.x * rotationSpeed * Time.fixedDeltaTime;
+        rb.MoveRotation(rb.rotation + rotationAmount);
     }
 
 
@@ -125,19 +106,19 @@ public class PlayerController : MonoBehaviour
 
             float offsetDistance = transform.localScale.x * 2f;  // Multiply scale by a factor (adjust as necessary)
         
-            if (moveDirection.x > 0)  // Player is moving right
+            if (moveInput.x > 0)  // Player is moving right
             {
                 spawnOffset = transform.right * offsetDistance;
             }
-            else if (moveDirection.x < 0)  // Player is moving left
+            else if (moveInput.x < 0)  // Player is moving left
             {
                 spawnOffset = -transform.right * offsetDistance;
             }
-            else if (moveDirection.y > 0)  // Player is moving up
+            else if (moveInput.y > 0)  // Player is moving up
             {
                 spawnOffset = transform.up * offsetDistance;
             }
-            else if (moveDirection.y < 0)  // Player is moving down
+            else if (moveInput.y < 0)  // Player is moving down
             {
                 spawnOffset = -transform.up * offsetDistance;
             }
@@ -172,8 +153,8 @@ public class PlayerController : MonoBehaviour
 
             Destroy(proj.GetComponent<ItemFunctions>());
 
-            // Set the direction for the projectile based on moveDirection
-            Vector2 fireDirection = moveDirection != Vector2.zero ? moveDirection : Vector2.right; // Default to right if stationary
+            // Set the direction for the projectile based on moveInput
+            Vector2 fireDirection = moveInput != Vector2.zero ? moveInput : Vector2.right; // Default to right if stationary
             proj.GetComponent<Projectile>().SetupProjectile(fireDirection, gameObject, projectileType);
 
             // Remove the item from the inventory
