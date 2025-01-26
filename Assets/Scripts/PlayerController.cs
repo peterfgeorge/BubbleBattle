@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 spawnOffset;
 
-            float offsetDistance = transform.localScale.x * 1.5f;  // Multiply scale by a factor (adjust as necessary)
+            float offsetDistance = transform.localScale.x * 2f;  // Multiply scale by a factor (adjust as necessary)
         
             if (moveDirection.x > 0)  // Player is moving right
             {
@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
             GameObject proj = Instantiate(projectile, spawnPosition, transform.rotation);
 
             proj.AddComponent<Projectile>();
+
+            Destroy(proj.GetComponent<ItemFunctions>());
 
             // Set the direction for the projectile based on moveDirection
             Vector2 fireDirection = moveDirection != Vector2.zero ? moveDirection : Vector2.right; // Default to right if stationary

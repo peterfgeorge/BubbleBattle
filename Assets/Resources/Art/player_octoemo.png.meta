@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player_octoemo_0: 5940476014650398420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
