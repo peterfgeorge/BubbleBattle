@@ -16,13 +16,28 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayAgain() {
-        var gameSceneName = GameDataManager.playAgainGameSceneName;
-        if (string.IsNullOrEmpty(gameSceneName))
-        {
-            Debug.LogError("No game scene name assigned to GameDataManager!");
+        PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
+        
+        if (playerManager == null) {
+            Debug.LogError("No PlayerManager found!");
             return;
         }
 
-        SceneManager.LoadScene(gameSceneName);
+        if (playerManager.ActivePlayersCount == 0) {
+            Debug.LogWarning("No players have joined!");
+            return;
+        }
+
+        playerManager.StartGame();
+
+        // Get players from playerManager and run Death() on each
+        foreach (GameObject player in playerManager.ActivePlayers) {
+            if (!player.TryGetComponent<PlayerController>(out var pc)) {
+                Debug.LogError("PlayerController not found on player!");
+                return;
+            }
+            
+            pc.Death();
+        }
     }
 }
