@@ -16,14 +16,14 @@ public class GameOver : MonoBehaviour {
             if (winner.PlayerIndex < 0 || winner.PlayerIndex > _gameOverSprites.Length) return;
 
             HideLosers(winner);
-            
+
             _gameOverSprites[winner.PlayerIndex].SetActive(true);
         } else {
             Debug.LogError("No winner found!");
         }
     }
 
-    public void HideLosers(PlayerController winner) {
+    private void HideLosers(PlayerController winner) {
         foreach (GameObject player in GameDataManager.activePlayers)
         {
             PlayerController playerController = player.GetComponent<PlayerController>();
@@ -35,7 +35,7 @@ public class GameOver : MonoBehaviour {
     }
 
     
-    public PlayerController GetWinner()
+    private PlayerController GetWinner()
     {
         float highestBubbleCount = 0.0f;
         PlayerController winningPlayer = null;
