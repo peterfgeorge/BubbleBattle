@@ -4,9 +4,7 @@ public class Projectile : MonoBehaviour
 {
     public enum ProjectileType { Dart, Bomb, SeaWeed, SwordFish }
 
-    public float speed = 10f;        // Speed of the dart
-    public int damage = 1;           // Amount of bubbles to lose per hit
-    
+    public float speed = 10f;        // Speed of the dart    
     public float rotationSpeed = 0.8f;
 
     private Vector2 direction;       // Direction the projectile will travel
@@ -92,7 +90,7 @@ public class Projectile : MonoBehaviour
                 if (projectileType == ProjectileType.Bomb)
                 {
                     Debug.Log("Bomb Hit");
-                    player.LoseBubbles(damage);  // Apply damage by reducing bubbles
+                    player.Death();  // Apply damage by reducing bubbles
                     Destroy(gameObject);  // Destroy the bomb after triggering
                 }
                 else if (projectileType == ProjectileType.Dart)
@@ -100,7 +98,7 @@ public class Projectile : MonoBehaviour
                     // Apply damage for the Dart type (if needed)
                     if (collision.gameObject == shooter) return;
                     Debug.Log("Dart Hit");
-                    player.LoseBubbles(damage);
+                    player.Death();
                     Destroy(gameObject);  // Destroy the dart after hitting the player
                 }
                 else if (projectileType == ProjectileType.SeaWeed)
@@ -116,7 +114,7 @@ public class Projectile : MonoBehaviour
                 {
                     // Apply damage for the Dart type (if needed)
                     Debug.Log("SwordFish Hit");
-                    player.LoseBubbles(damage);
+                    player.Death();
                     Destroy(gameObject);  // Destroy the dart after hitting the player
                 }
             }

@@ -133,11 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: items.Array.data[1].spawnChance
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: items.Array.data[2].spawnChance
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014223345811279836, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: m_LocalPosition.x
