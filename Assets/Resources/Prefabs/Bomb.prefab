@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.37, y: -0.13, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -68264836794118590, guid: 79a7db07ad80b7e449ea832a1168e7d8, type: 3}
+  m_Sprite: {fileID: 773175390370345922, guid: c70c1d6b9b60d6548829836caacdf1e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.55, y: 2.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,4 +104,4 @@ MonoBehaviour:
   _detonationTime: 1
   _projectileSpeed: 200
   _projectileScale: 0.5
-  _projectileSprite: {fileID: -3266210453699307898, guid: 864f331bcbe3db1499503fbab23bc11d, type: 3}
+  _projectileSprite: {fileID: 5688566967813069239, guid: 782437f3d11939e4695f3eee187cb5bb, type: 3}

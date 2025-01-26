@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1873217742200968195
+--- !u!1001 &2218228399310566170
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,32 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2801100095441501058, guid: aa33c1dc8503af64e9f885e0dc4354ac, type: 3}
-    - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.99894536
       objectReference: {fileID: 0}
     - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Color.r
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,19 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520806623174888022, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: itemName
-      value: SeaWeed
-      objectReference: {fileID: 0}
-    - target: {fileID: 5501496409128804154, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5501496409128804154, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.42
+      value: SwordFish
       objectReference: {fileID: 0}
     - target: {fileID: 6234928750943485252, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Name
-      value: SeaWeed
+      value: SwordFish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

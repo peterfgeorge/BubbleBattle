@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca927e574d6a86844bb9580b26acb517
+guid: c70c1d6b9b60d6548829836caacdf1e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7708224517371022466
-    second: item_seaweedtrap_0
+      213: 773175390370345922
+    second: item_puffbomb 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: item_seaweedtrap_0
+      name: item_puffbomb 1_0
       rect:
         serializedVersion: 2
-        x: 97
-        y: 79
-        width: 1551
-        height: 1871
+        x: 1
+        y: 1
+        width: 255
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28c4bdecb5d19fa60800000000000000
-      internalID: 7708224517371022466
+      spriteID: 2c3391ccbeedaba00800000000000000
+      internalID: 773175390370345922
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      item_seaweedtrap_0: 7708224517371022466
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
