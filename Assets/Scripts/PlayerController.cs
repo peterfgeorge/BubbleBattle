@@ -26,10 +26,18 @@ public class PlayerController : MonoBehaviour
 
     private PlayerManager gameManager;
 
+    private PlayerInput playerInput;
+    private int _playerIndex = -1;
+
+    public int PlayerIndex
+    {
+        get { return _playerIndex; }
+    }
 
     private void Awake()
     {
-        var playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerInput>();
+        _playerIndex = playerInput.playerIndex;
         Debug.Log($"Player {playerInput.playerIndex} using device: {playerInput.devices[0].displayName}");
     }
 
@@ -51,6 +59,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float bubbleLossRate = .25f; // Bubbles lost per second while dashing
     private bool isDashing = false;  // Tracks if the player is dashing
     private Coroutine dashCoroutine;
+
+    // Get bubble count with getter
+    public float BubbleCount
+    {
+        get { return bubbleCount; }
+    }
 
     private void Update()
     {
