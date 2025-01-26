@@ -9,8 +9,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -9223337412464836885, guid: b4a47a064f9413e44a54c1f2b70ee1a6, type: 3}
+    - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Color.g
@@ -18,7 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957454862429634031, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Color.r
-      value: 0.14573431
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2378424198092285056, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,6 +83,14 @@ PrefabInstance:
     - target: {fileID: 4520806623174888022, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: isDartItem
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501496409128804154, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501496409128804154, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 6234928750943485252, guid: ab3925808da0b5d49928b82d9fea0f99, type: 3}
       propertyPath: m_Name
