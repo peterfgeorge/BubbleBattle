@@ -254,7 +254,15 @@ public class PlayerController : MonoBehaviour
 
     public void LoseBubbles(int amount)
     {
-        bubbleCount -= amount;
+        if(bubbleCount == 0)
+        {
+            bubbleCount = 0;
+        }
+        else
+        {
+            bubbleCount -= amount;
+        }
+        
         Debug.Log($"Bubble count: {bubbleCount}");
     }
 }
