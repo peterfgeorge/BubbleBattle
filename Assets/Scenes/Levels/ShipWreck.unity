@@ -35003,6 +35003,10 @@ PrefabInstance:
       value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 1318127168627479083, guid: 61ab9b0cccd4d5147b9e25d12fe0ca24, type: 3}
+      propertyPath: _startTimeSeconds
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318127168627479083, guid: 61ab9b0cccd4d5147b9e25d12fe0ca24, type: 3}
       propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2044343272}
