@@ -19,9 +19,12 @@ public class PlayerManager : MonoBehaviour
     // Get activePlayers count with a getter
     public int ActivePlayersCount => activePlayers.Count;
 
+    public List<GameObject> ActivePlayers => activePlayers;
+
     void Start()
     {
         manager = GetComponent<PlayerInputManager>();
+        DontDestroyOnLoad(manager);
 
         if (players.Count == 0)
         {
@@ -92,11 +95,6 @@ public class PlayerManager : MonoBehaviour
 
         // Get a random index from the gameSceneName array
         int randomIndex = Random.Range(0, gameSceneName.Length);
-
-        // NOTE: "Play again" will always load the same scene because of this line
-        // The PlayerManager doesn't exist in the Game Scene
-        // TODO: Keep PlayerManager in Game Scene
-        GameDataManager.playAgainGameSceneName = gameSceneName[randomIndex];
 
         // Load the random scene
         SceneManager.LoadScene(gameSceneName[randomIndex]);
