@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 864f331bcbe3db1499503fbab23bc11d
+guid: a5babbd7afcc2b54ea6590c57caadc51
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3266210453699307898
-    second: item_puffbomb_projectile_0
+      213: 1386332241681114010
+    second: Item_Bubbles_0
+  - first:
+      213: 2604790236608488003
+    second: Item_Bubbles_1
+  - first:
+      213: 2749025531132578976
+    second: Item_Bubbles_2
+  - first:
+      213: 18986198639114645
+    second: Item_Bubbles_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -73,9 +82,9 @@ TextureImporter:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: item_puffbomb_projectile_0
+      name: Item_Bubbles_0
       rect:
         serializedVersion: 2
-        x: 758
-        y: 723
-        width: 397
-        height: 593
+        x: 9
+        y: 31
+        width: 119
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 686d591c5e61ca2d0800000000000000
-      internalID: -3266210453699307898
+      spriteID: a93e21624dd3d3310800000000000000
+      internalID: 1386332241681114010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Bubbles_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 117
+        width: 132
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 342647f5be2162420800000000000000
+      internalID: 2604790236608488003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Bubbles_2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 72
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac03a5d720862620800000000000000
+      internalID: 2749025531132578976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Bubbles_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 11
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 599f489d8d3734000800000000000000
+      internalID: 18986198639114645
       vertices: []
       indices: 
       edges: []
@@ -138,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3e3fab0d2c3739d4bb843771323c3dd5
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      item_puffbomb_projectile_0: -3266210453699307898
+      Item_Bubbles_0: 1386332241681114010
+      Item_Bubbles_1: 2604790236608488003
+      Item_Bubbles_2: 2749025531132578976
+      Item_Bubbles_3: 18986198639114645
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

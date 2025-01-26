@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public enum ProjectileType { Dart, Bomb, SeaWeed }
+    public enum ProjectileType { Dart, Bomb, SeaWeed, SwordFish }
 
     public float speed = 10f;        // Speed of the dart
     public int damage = 1;           // Amount of bubbles to lose per hit
@@ -39,6 +39,10 @@ public class Projectile : MonoBehaviour
         {
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
         }
+        else if (projectileType == ProjectileType.SwordFish)
+        {
+            transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,7 +62,6 @@ public class Projectile : MonoBehaviour
                 if (projectileType == ProjectileType.Bomb)
                 {
                     Debug.Log("Bomb Hit");
-                    if (collision.gameObject == shooter) return;
                     player.LoseBubbles(damage);  // Apply damage by reducing bubbles
                     Destroy(gameObject);  // Destroy the bomb after triggering
                 }
@@ -78,6 +81,13 @@ public class Projectile : MonoBehaviour
                         player.ApplySlowEffect(0.5f, 3f); // Reduce speed to 50% for 3 seconds
                     }
                     Destroy(gameObject);
+                }
+                else if (projectileType == ProjectileType.SwordFish)
+                {
+                    // Apply damage for the Dart type (if needed)
+                    Debug.Log("SwordFish Hit");
+                    player.LoseBubbles(damage);
+                    Destroy(gameObject);  // Destroy the dart after hitting the player
                 }
             }
         }

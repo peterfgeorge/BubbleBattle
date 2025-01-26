@@ -144,6 +144,10 @@ public class PlayerController : MonoBehaviour
             {
                 projectileType = Projectile.ProjectileType.SeaWeed;
             }
+            else if(currentItem == "SwordFish")
+            {
+                projectileType = Projectile.ProjectileType.SwordFish;
+            }
             else
             {
                 projectileType = Projectile.ProjectileType.Dart;

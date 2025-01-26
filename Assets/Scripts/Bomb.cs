@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviour
 
     void Awake() 
     {
-        _radius = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        _radius = GetComponent<SpriteRenderer>().bounds.size.x / 2 * transform.localScale.x;
         _arcStride = 360.0f / _projectiles;
     }
 
