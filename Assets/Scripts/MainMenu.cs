@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayAgain() {
+        Debug.Log("Play again called");
         PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
         
         if (playerManager == null) {
@@ -28,8 +29,6 @@ public class MainMenu : MonoBehaviour
             return;
         }
 
-        playerManager.StartGame();
-
         // Get players from playerManager and run Death() on each
         foreach (GameObject player in playerManager.ActivePlayers) {
             if (!player.TryGetComponent<PlayerController>(out var pc)) {
@@ -39,5 +38,7 @@ public class MainMenu : MonoBehaviour
             
             pc.Death();
         }
+
+        playerManager.StartGame();
     }
 }
