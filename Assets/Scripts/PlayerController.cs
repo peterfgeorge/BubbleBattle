@@ -163,6 +163,9 @@ public class PlayerController : MonoBehaviour
             // Remove the item from the inventory
             currentItem = null;
             Debug.Log("Item used and removed from inventory.");
+
+            Transform curProjectileTransform = transform.Find("CurProjectile");
+            curProjectileTransform.GetComponent<SpriteRenderer>().sprite = null;
         }
         else
         {
@@ -185,7 +188,50 @@ public class PlayerController : MonoBehaviour
         if (currentItem == null)
         {
             currentItem = itemName;
-            Debug.Log($"Picked up: {itemName}");
+            Transform curProjectileTransform = transform.Find("CurProjectile");
+
+        if (curProjectileTransform != null)
+        {
+            // Get the SpriteRenderer component
+            SpriteRenderer spriteRenderer = curProjectileTransform.GetComponent<SpriteRenderer>();
+
+            if (spriteRenderer != null)
+            {
+                // Search for the prefab in the "Prefabs" folder
+                GameObject prefab = Resources.Load<GameObject>($"Prefabs/{itemName}");
+
+                if (prefab != null)
+                {
+                    // Get the SpriteRenderer component from the prefab
+                    SpriteRenderer prefabSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
+
+                    if (prefabSpriteRenderer != null)
+                    {
+                        // Assign the prefab's sprite to the current SpriteRenderer
+                        spriteRenderer.sprite = prefabSpriteRenderer.sprite;
+
+                        // Resize the sprite to 50% of its original size
+                        curProjectileTransform.localScale = new Vector3(0.5f, 0.5f, 1f); // Assuming original scale is (1,1,1)
+                    }
+                    else
+                    {
+                        Debug.LogError($"Prefab {itemName} does not have a SpriteRenderer!");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"Prefab {itemName} not found in Prefabs folder!");
+                }
+            }
+            else
+            {
+                Debug.LogError("CurProjectile does not have a SpriteRenderer!");
+            }
+        }
+        else
+        {
+            Debug.LogError("CurProjectile child GameObject not found!");
+        }
             return true;
         }
 
