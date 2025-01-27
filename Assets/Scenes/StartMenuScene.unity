@@ -1365,6 +1365,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
+      propertyPath: activePlayersParent
+      value: 
+      objectReference: {fileID: 2068421723}
+    - target: {fileID: 2284000586032409307, guid: 120c61f599f934954aa606446d8c2c66, type: 3}
       propertyPath: 'players.Array.data[3]'
       value: 
       objectReference: {fileID: 6309047770202320834, guid: a38938131cd6148e88a4afef6fa6ba29, type: 3}
@@ -5658,6 +5662,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029458648}
   m_CullTransparentMesh: 1
+--- !u!1 &2068421723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068421724}
+  m_Layer: 0
+  m_Name: ActivePlayers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2068421724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068421723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 421.18243, y: 427.70163, z: -15.063058}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2068564517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6171,3 +6206,4 @@ SceneRoots:
   - {fileID: 393364050}
   - {fileID: 219978810}
   - {fileID: 399615550}
+  - {fileID: 2068421724}

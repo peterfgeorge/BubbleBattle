@@ -10,31 +10,61 @@ public class GameSceneController : MonoBehaviour
     private void Start()
     {
         // Get all game objects that have been marked with DontDestroyOnLoad
-        FindAndTeleportPlayerObjects();
+        FindAndTeleportActivePlayers();
     }
 
-    private void FindAndTeleportPlayerObjects()
+    private void FindAndTeleportActivePlayers()
     {
-        // Find all GameObjects in the scene
-        GameObject[] allObjects = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        
-        int playerIndex = 0; // For assigning spawn points
-
-        foreach (GameObject obj in allObjects)
+        // Find the "ActivePlayers" GameObject in the scene
+        GameObject activePlayers = GameObject.Find("ActivePlayers");
+        if (activePlayers == null)
         {
-            // Check if the object name contains "Player" (case-insensitive)
-            if (obj.name.Contains("Player"))
-            {
-                // Get the spawn point (circular if more players than spawn points)
-                Transform spawnPoint = spawnPoints.Length > playerIndex ? spawnPoints[playerIndex] : null;
-                Vector3 spawnPosition = spawnPoint != null ? spawnPoint.position : Vector3.zero;
+            Debug.LogError("No 'ActivePlayers' GameObject found in the scene!");
+            return;
+        }
 
-                // Teleport the player to the spawn point
-                obj.transform.position = spawnPosition;
-                Debug.Log($"Teleported {obj.name} to {spawnPosition}");
+        // Get the children of "ActivePlayers"
+        Transform[] players = new Transform[activePlayers.transform.childCount];
+        for (int i = 0; i < activePlayers.transform.childCount; i++)
+        {
+            players[i] = activePlayers.transform.GetChild(i);
+        }
 
-                playerIndex++;
-            }
+        // Create a list of available spawn points and shuffle it
+        List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
+        ShuffleList(availableSpawnPoints);
+
+        // Ensure enough spawn points are available
+        if (availableSpawnPoints.Count < players.Length - 1) // Subtract 1 to exclude the parent
+        {
+            Debug.LogError("Not enough spawn points for all players!");
+            return;
+        }
+
+        // Assign each player (excluding the parent) to a random unique spawn point
+        int index = 0;
+        foreach (Transform player in players)
+        {
+            if (player == activePlayers.transform) // Skip the parent GameObject
+                continue;
+
+            // Assign the player to a spawn point
+            Transform spawnPoint = availableSpawnPoints[index];
+            player.position = spawnPoint.position;
+            Debug.Log($"Teleported {player.name} to {spawnPoint.position}");
+
+            index++;
+        }
+    }
+
+    private void ShuffleList<T>(List<T> list)
+    {
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            T temp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
         }
     }
 }

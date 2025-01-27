@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Win_crab_lose_octopus_0: 255430300245176127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

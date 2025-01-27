@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Win_fish_lose_seahorse_0: -640888568956384065
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

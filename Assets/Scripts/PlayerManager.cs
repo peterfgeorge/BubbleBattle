@@ -21,10 +21,13 @@ public class PlayerManager : MonoBehaviour
 
     public List<GameObject> ActivePlayers => activePlayers;
 
+    public GameObject activePlayersParent;
+
     void Start()
     {
         manager = GetComponent<PlayerInputManager>();
         DontDestroyOnLoad(manager);
+        DontDestroyOnLoad(activePlayersParent);
 
         if (players.Count == 0)
         {
@@ -87,6 +90,8 @@ public class PlayerManager : MonoBehaviour
 
         // Optionally assign a custom name to the player
         newPlayer.gameObject.name = $"Player {newPlayer.playerIndex}";
+
+        newPlayer.gameObject.transform.SetParent(activePlayersParent.transform);
     }
 
     public void StartGame()
