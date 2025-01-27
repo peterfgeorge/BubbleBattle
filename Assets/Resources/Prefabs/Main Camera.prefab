@@ -153,6 +153,6 @@ MonoBehaviour:
   targets: []
   offset: {x: 0, y: 0, z: -20}
   smoothTime: 0.5
-  minZoom: 40
-  maxZoom: 10
+  minZoom: 200
+  maxZoom: 40
   zoomLimiter: 50
