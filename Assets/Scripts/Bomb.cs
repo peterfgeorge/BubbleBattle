@@ -7,10 +7,8 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField]
     private int _projectiles = 6;
-
     [SerializeField]
     private float _detonationTime = 3.0f;
-
     [SerializeField]
     private int _projectileSpeed = 200;
     [SerializeField]
@@ -19,8 +17,6 @@ public class Bomb : MonoBehaviour
     private Sprite _projectileSprite;
 
     private float _radius = 0;
-    // For debug
-    // private float _arcStride = 0;
 
     void Awake() 
     {
@@ -28,20 +24,12 @@ public class Bomb : MonoBehaviour
         Debug.Log("localScale: " + localScale);
         float diameter = GetComponent<SpriteRenderer>().bounds.size.x  * Mathf.Sign(transform.localScale.x);
         _radius =  diameter / 2;
-        Debug.Log("Awake: " + _radius);
-        // For debug
-        // _arcStride = 360.0f / _projectiles;
+        //Debug.Log("Awake: " + _radius);
     }
 
     void Start() 
     {
-        Debug.Log("Start: " + _radius);
         Invoke(nameof(Detonate), _detonationTime);
-    }
-
-    void OnEnable() 
-    {
-        Debug.Log("OnEnable: " + _radius);
     }
 
     void Update()
@@ -60,8 +48,6 @@ public class Bomb : MonoBehaviour
             float xAngle = Mathf.Cos(angle);
             float yAngle = Mathf.Sin(angle);
 
-            projectile.AddComponent<Rotator>();
-
             // TODO: Fix the rotation of the projectiles
             // Debug.Log("Arc Stride: " + (i * _arcStride) + " xAngle: " + xAngle + " yAngle: " + yAngle);
             // Set the position along the circumference of the circle based on the arc stride
@@ -77,7 +63,7 @@ public class Bomb : MonoBehaviour
             projectile.transform.localPosition = new Vector3(xAngle * _radius, yAngle * _radius, 0);
 
             // Rotate the projectile using Atan2 to get the angle between the projectile and the center of the circle
-            float angleInDegrees = (float)((Mathf.Atan2(yAngle, xAngle) + Math.PI/4) * Mathf.Rad2Deg);
+            float angleInDegrees = (float)(Mathf.Atan2(yAngle, xAngle) + Math.PI/4) * Mathf.Rad2Deg;
             projectile.transform.rotation = Quaternion.Euler(0, 0, angleInDegrees);
 
             projectile.transform.localScale = new Vector3(_projectileScale, _projectileScale, 1);
@@ -95,12 +81,10 @@ public class Bomb : MonoBehaviour
             Rigidbody2D rigidbody = projectile.AddComponent<Rigidbody2D>();
             rigidbody.gravityScale = 0;
 
+            // Bomb shrapnel is considered a bomb type when it hits a player
             boxCollider.AddComponent<Projectile>();
 
-            // projectile.AddComponent<Mover>();
-
-
-            // Revisit later: Keeping because it caused an effect that could be exaggerated
+            // Bomb shrapnel movement isn't computed in the Projectile script
             rigidbody.linearVelocity = _projectileSpeed * projectile.transform.up;
             
             // Move the projectile shrapnel in the direction of the angle
