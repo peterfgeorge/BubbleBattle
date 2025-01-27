@@ -48,13 +48,13 @@ MonoBehaviour:
   - prefab: {fileID: 7452453453801691028, guid: 7171263240703da44a7055493c366b2e, type: 3}
     spawnChance: 1
   - prefab: {fileID: 4155378357388633211, guid: 3a7cea3734d9b7545b5cbce259793172, type: 3}
-    spawnChance: 0.7
-  - prefab: {fileID: 8084333325884619862, guid: c5af1a77e6ba6d945a1fe4d9bd57fe92, type: 3}
-    spawnChance: 0.6
-  - prefab: {fileID: 5726867021174548807, guid: d88c15a181f644440b4d8c3210367313, type: 3}
     spawnChance: 0.4
+  - prefab: {fileID: 8084333325884619862, guid: c5af1a77e6ba6d945a1fe4d9bd57fe92, type: 3}
+    spawnChance: 0.2
+  - prefab: {fileID: 5726867021174548807, guid: d88c15a181f644440b4d8c3210367313, type: 3}
+    spawnChance: 0.2
   - prefab: {fileID: 5210190139754401374, guid: 146fd5d2ae063474a8099d69f32a3bad, type: 3}
-    spawnChance: 0.3
+    spawnChance: 0.4
   spawnAreaMin: {x: -25, y: -12}
   spawnAreaMax: {x: 25, y: 12}
   spawnInterval: 3
