@@ -123,6 +123,34 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            Destroy(gameObject);  // Destroy the item if it hits a wall
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided!!!!!!!!!!");
+        // Ignore collision with the player who fired the projectile
+        if (collision.gameObject == shooter) return;
+
+        Debug.Log("Projectile collided with: " + collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Get the PlayerController script from the collided player
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                // If the projectile is a Bomb, apply damage (or effect)
+                if (projectileType == ProjectileType.Bomb)
+                {
+                    Debug.Log("Bomb Hit");
+                    player.Death();  // Apply damage by reducing bubbles
+                    Destroy(gameObject);  // Destroy the bomb
+                }
+            }
+        }
     }
 }
 

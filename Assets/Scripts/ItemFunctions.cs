@@ -7,6 +7,7 @@ public class ItemFunctions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log($"Item {itemName} collided with {collision.name}");
         if (collision.CompareTag("Player"))
         {
             // Get the PlayerController script from the collided player

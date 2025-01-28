@@ -46643,6 +46643,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 8327674778816059740, guid: bec7948ae1d724644814e603297cc94b, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327674778816059740, guid: bec7948ae1d724644814e603297cc94b, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47000,7 +47008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: spawnAreaMax.y
-      value: -12
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6211228740546792247, guid: 1049661b83667514e89101c2196c062d, type: 3}
       propertyPath: spawnAreaMin.x
@@ -47112,6 +47120,18 @@ PrefabInstance:
     - target: {fileID: 3979509373181097111, guid: 286d2476d847c524f95c14c41018e6d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016764036718715501, guid: 286d2476d847c524f95c14c41018e6d7, type: 3}
+      propertyPath: maxZoom
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016764036718715501, guid: 286d2476d847c524f95c14c41018e6d7, type: 3}
+      propertyPath: targets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016764036718715501, guid: 286d2476d847c524f95c14c41018e6d7, type: 3}
+      propertyPath: 'targets.Array.data[0]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6111500686477078985, guid: 286d2476d847c524f95c14c41018e6d7, type: 3}
       propertyPath: m_Name
