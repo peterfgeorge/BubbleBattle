@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectiles: 10
-  _detonationTime: 1
+  _detonationTime: 5
   _projectileSpeed: 10
   _projectileScale: 0.5
   _projectileSprite: {fileID: 5688566967813069239, guid: 782437f3d11939e4695f3eee187cb5bb, type: 3}

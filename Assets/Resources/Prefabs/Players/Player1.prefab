@@ -398,7 +398,7 @@ MonoBehaviour:
   bubbleCount: 0
   dashSpeed: 9
   normalSpeed: 5
-  bubbleLossRate: 2
+  bubbleLossRate: 0.25
 --- !u!50 &7113824099530573091
 Rigidbody2D:
   serializedVersion: 5
