@@ -356,8 +356,7 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
-        bubbleCount = 0;
-        Debug.Log($"Bubble count: {bubbleCount}");
+        Reset();
 
         // Disable player components
         GetComponent<Renderer>().enabled = false;
@@ -366,6 +365,18 @@ public class PlayerController : MonoBehaviour
 
         // Start the respawn coroutine
         StartCoroutine(RespawnPlayer());
+    }
+
+    public void Reset()
+    {
+        bubbleCount = 0;
+        Debug.Log($"Bubble count: {bubbleCount}");
+
+        currentItem = null;
+        projectile = null;
+        isSwordFishActive = false;
+        Transform curProjectileTransform = transform.Find("CurProjectile");
+        curProjectileTransform.GetComponent<SpriteRenderer>().sprite = null;
     }
 
     private IEnumerator RespawnPlayer()

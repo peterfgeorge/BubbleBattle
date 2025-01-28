@@ -25,7 +25,9 @@ public class GameOver : MonoBehaviour {
         } else {
             Debug.LogWarning("No winner found!");
         }
-        RestartGame();
+
+        Debug.Log("RESTARTING GAME");
+        Invoke(nameof(PlayAgain), _restartTime);
     }
 
     private void HideLosers(PlayerController winner) {
@@ -38,22 +40,19 @@ public class GameOver : MonoBehaviour {
             }
         }
     }
-
-    // Wait a few seconds and then call the PlayAgain() function
-    public void RestartGame() {
-        Debug.Log("RESTARTING GAME");
-        Invoke("PlayAgain", _restartTime);
-    }
     
     private PlayerController GetWinner()
     {
         float highestBubbleCount = 0.0f;
         PlayerController winningPlayer = null;
+        string scores = "Scores: ";
 
         foreach (GameObject player in GameDataManager.activePlayers)
         {
             PlayerController playerController = player.GetComponent<PlayerController>();
             float bubbleCount = playerController.BubbleCount;
+
+            scores += $"{playerController.name} - {bubbleCount}, ";
 
             if (bubbleCount > highestBubbleCount)
             {
@@ -66,11 +65,13 @@ public class GameOver : MonoBehaviour {
         {
             Debug.Log($"Player {winningPlayer.name} wins with {highestBubbleCount} bubbles!");
         }
+        
+        Debug.Log(scores);
+
         return winningPlayer;
     }
 
-    public void PlayAgain() {
-        Debug.Log("Play again called");
+    private void PlayAgain() {
         PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
         
         if (playerManager == null) {
@@ -85,12 +86,14 @@ public class GameOver : MonoBehaviour {
 
         // Get players from playerManager and run Death() on each
         foreach (GameObject player in playerManager.ActivePlayers) {
+            player.SetActive(true);
+
             if (!player.TryGetComponent<PlayerController>(out var pc)) {
                 Debug.LogError("PlayerController not found on player!");
                 return;
             }
             
-            pc.Death();
+            pc.Reset();
         }
 
         playerManager.StartGame();

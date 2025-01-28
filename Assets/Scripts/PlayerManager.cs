@@ -98,6 +98,8 @@ public class PlayerManager : MonoBehaviour
     {
         GameDataManager.activePlayers = activePlayers;
 
+        activePlayers.ForEach(player => player.SetActive(true));
+
         // Get a random index from the gameSceneName array
         int randomIndex = Random.Range(0, gameSceneName.Length);
 
