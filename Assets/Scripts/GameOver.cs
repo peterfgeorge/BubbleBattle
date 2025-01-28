@@ -12,6 +12,7 @@ public class GameOver : MonoBehaviour {
 
     // Show Winner Panel with the corresponding sprite from _gameOverSprites
     public void ShowWinner() {
+        Debug.Log("GAME OVER, SHOWING WINNER");
         gameObject.SetActive(true);
         PlayerController winner = GetWinner();
         if (winner != null)
@@ -96,6 +97,7 @@ public class GameOver : MonoBehaviour {
             pc.Reset();
         }
 
+        Debug.Log("Okay were starting the game!");
         playerManager.StartGame();
     }
 }
