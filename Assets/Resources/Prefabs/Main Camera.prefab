@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  offset: {x: 0, y: 0, z: -20}
+  offset: {x: 0, y: 0, z: -33}
   smoothTime: 0.5
-  minZoom: 200
-  maxZoom: 40
+  minZoom: 55
+  maxZoom: 30
   zoomLimiter: 50
