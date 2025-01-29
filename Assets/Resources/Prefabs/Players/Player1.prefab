@@ -304,7 +304,7 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3532347007873150500}
+      - m_Target: {fileID: 2841636628336788360}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -369,6 +369,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: df25e8b5-456c-4ac3-81eb-40b0297792e8
     m_ActionName: 'Gameplay/Dash[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2841636628336788360}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f76442f-86f6-4142-a0b7-cfb9aaaf9c1f
+    m_ActionName: 'Gameplay/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool isSwordFishActive = false;
 
     private PlayerManager gameManager;
+    private GameSceneController sceneManager;
 
     private PlayerInput playerInput;
     private int _playerIndex = -1;
@@ -421,5 +423,10 @@ public class PlayerController : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+    }
+
+    public void OnPause(InputAction.CallbackContext obj) {
+        sceneManager = GameObject.Find("SceneManager").GetComponent<GameSceneController>();
+        sceneManager.PauseGame();
     }
 }

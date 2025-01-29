@@ -154,5 +154,5 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -33}
   smoothTime: 0.5
   minZoom: 55
-  maxZoom: 30
+  maxZoom: 45
   zoomLimiter: 50

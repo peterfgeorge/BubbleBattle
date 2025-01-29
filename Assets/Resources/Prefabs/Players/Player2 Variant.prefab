@@ -125,6 +125,10 @@ PrefabInstance:
       value: 8b379c02-4e11-4e8d-bdc5-218f8fde9395
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: e704c897-ea87-4681-b5be-1ce2ad8c44f9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
       value: 'Gameplay/Fire[/Keyboard/f]'
       objectReference: {fileID: 0}
@@ -173,6 +177,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6346932966376357114}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1582512087408314187, guid: becc9b177c33d4cbe9f278969d2446ef, type: 3}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMove
       objectReference: {fileID: 0}
@@ -183,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnDash
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -197,6 +209,10 @@ PrefabInstance:
       value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -206,6 +222,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

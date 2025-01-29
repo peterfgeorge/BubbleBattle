@@ -2,15 +2,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints; // Assign spawn points in the Inspector
+    [SerializeField] private GameObject pauseCanvas;
+    private bool isPaused = false;
 
     private void Start()
     {
         // Get all game objects that have been marked with DontDestroyOnLoad
         FindAndTeleportActivePlayers();
+    }
+
+    public void OnPause() {
+        if (isPaused)
+                ResumeGame();
+            else
+                PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        pauseCanvas.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseCanvas.SetActive(false);
+    }
+
+    public void QuitToMainMenu()
+    {
+        Time.timeScale = 1f; // Reset time scale in case it's paused
+        SceneManager.LoadScene("StartMenuScene");
     }
 
     private void FindAndTeleportActivePlayers()
