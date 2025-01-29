@@ -165,6 +165,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6346932966376357114}
@@ -179,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1582512087408314187, guid: becc9b177c33d4cbe9f278969d2446ef, type: 3}
+      objectReference: {fileID: 6346932966376357114}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMove
@@ -194,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseGame
+      value: OnPause
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -210,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameSceneController, Assembly-CSharp
+      value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9004185802751649481, guid: 157527a471f83ba429b3b0535a1a2f5b, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

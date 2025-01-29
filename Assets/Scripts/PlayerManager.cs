@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] List<GameObject> activePlayers = new List<GameObject>();
     [SerializeField] List<GameObject> unreadyPanels = new List<GameObject>();
     [SerializeField] List<GameObject> readyPanels = new List<GameObject>();
+    [SerializeField] public string allowedSceneName = "StartMenuScene";
     private List<InputDevice> activeDevices = new List<InputDevice>();
     public string[] gameSceneName;
 
@@ -42,8 +43,9 @@ public class PlayerManager : MonoBehaviour
         manager.onPlayerJoined += OnPlayerJoined;
     }
 
-    public void SwitchNextSpawnCharacter(PlayerInput input)
+    public void SwitchNextSpawnCharacter(PlayerInput input) // where is this used?
     {
+        Debug.Log("This dumbass script is running!!!!");
         if (players.Count == 0)
         {
             Debug.LogError("No player prefabs available!");
@@ -56,6 +58,12 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
+        if (SceneManager.GetActiveScene().name != allowedSceneName)
+        {
+            Debug.Log($"Player join attempt blocked. Current scene: {SceneManager.GetActiveScene().name}");
+            return;
+        }
+        
         // Activate the corresponding unready panel
         unreadyPanels[index].SetActive(false);
         readyPanels[index].SetActive(true);
@@ -75,6 +83,13 @@ public class PlayerManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput newPlayer)
     {
+        if (SceneManager.GetActiveScene().name != allowedSceneName)
+        {
+            Debug.Log($"Player join attempt blocked. Current scene: {SceneManager.GetActiveScene().name}");
+            Destroy(newPlayer.gameObject); // Prevent the player from spawning
+            return;
+        }
+
         // Get the device used to spawn this player
         InputDevice spawningDevice = newPlayer.devices[0];
 
