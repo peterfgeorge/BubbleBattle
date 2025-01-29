@@ -426,6 +426,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnPause(InputAction.CallbackContext obj) {
+        Debug.Log("PAUSING GAME");
         sceneManager = GameObject.Find("SceneManager").GetComponent<GameSceneController>();
         sceneManager.PauseGame();
     }

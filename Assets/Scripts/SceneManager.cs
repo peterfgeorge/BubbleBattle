@@ -17,6 +17,7 @@ public class GameSceneController : MonoBehaviour
     }
 
     public void OnPause() {
+        Debug.Log("Pause button pressed");
         if (isPaused)
                 ResumeGame();
             else
@@ -28,10 +29,12 @@ public class GameSceneController : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0f;
         pauseCanvas.SetActive(true);
+        Debug.Log("Canvas is active");
     }
 
     public void ResumeGame()
     {
+        Debug.Log("Resume buttton pressed");
         isPaused = false;
         Time.timeScale = 1f;
         pauseCanvas.SetActive(false);
@@ -39,6 +42,7 @@ public class GameSceneController : MonoBehaviour
 
     public void QuitToMainMenu()
     {
+        Debug.Log("Quit buttton pressed");
         Time.timeScale = 1f; // Reset time scale in case it's paused
         SceneManager.LoadScene("StartMenuScene");
     }
