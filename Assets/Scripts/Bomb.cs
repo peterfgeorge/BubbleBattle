@@ -41,61 +41,46 @@ public class Bomb : MonoBehaviour
     {
         for (int i = 0; i < _projectiles; i++)
         {
-            GameObject projectile = new GameObject("Projectile");
-            projectile.transform.SetParent(transform);
-
-            float angle = i * Mathf.PI * 2 / _projectiles;
-            float xAngle = Mathf.Cos(angle);
-            float yAngle = Mathf.Sin(angle);
-
-            // TODO: Fix the rotation of the projectiles
-            // Debug.Log("Arc Stride: " + (i * _arcStride) + " xAngle: " + xAngle + " yAngle: " + yAngle);
-            // Set the position along the circumference of the circle based on the arc stride
-            // projectile.transform.SetLocalPositionAndRotation(
-            //     new Vector3(
-            //         xAngle * _radius, 
-            //         yAngle * _radius,
-            //     0
-            //     ),
-            //     Quaternion.Euler(0, 0, i * _arcStride + 45)
-            // );
-
-            projectile.transform.localPosition = new Vector3(xAngle * _radius, yAngle * _radius, 0);
-
-            // Rotate the projectile using Atan2 to get the angle between the projectile and the center of the circle
-            float angleInDegrees = (float)(Mathf.Atan2(yAngle, xAngle) + Math.PI/4) * Mathf.Rad2Deg;
-            projectile.transform.rotation = Quaternion.Euler(0, 0, angleInDegrees);
-
-            projectile.transform.localScale = new Vector3(_projectileScale, _projectileScale, 1);
-
-            SpriteRenderer projectileSpriteRenderer = projectile.AddComponent<SpriteRenderer>();
-            projectileSpriteRenderer.sprite = _projectileSprite;
-            projectileSpriteRenderer.sortingOrder = 1;
-
-            BoxCollider2D boxCollider = projectile.AddComponent<BoxCollider2D>();
-
-            float projectileSize = projectileSpriteRenderer.bounds.size.x;
-            boxCollider.size = new Vector2(projectileSize, projectileSize);
-            boxCollider.isTrigger = true;
-
-            Rigidbody2D rigidbody = projectile.AddComponent<Rigidbody2D>();
-            rigidbody.gravityScale = 0;
-
-            // Bomb shrapnel is considered a bomb type when it hits a player
-            boxCollider.AddComponent<Projectile>();
-
-            // Bomb shrapnel movement isn't computed in the Projectile script
-            rigidbody.linearVelocity = _projectileSpeed * projectile.transform.up;
-            
-            // Move the projectile shrapnel in the direction of the angle
-            // rigidbody.linearVelocity = new Vector2(
-            //     xAngle * _projectileSpeed * Time.deltaTime,
-            //     yAngle * _projectileSpeed * Time.deltaTime
-            // );
+            float theta = i * Mathf.PI * 2 / _projectiles;
+            Vector2 direction = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
+            Debug.Log("i. " + i + " - Direction: " + direction);
+            SetupProjectile(direction);
         }
     }
 
-    void DrawDebugCircle(Vector2 center, float radius, int segments, Color color) {
+    private void SetupProjectile(Vector2 direction) 
+    {
+        GameObject projectile = new GameObject("Projectile");
+        projectile.transform.SetParent(transform);
+
+        projectile.transform.localPosition = new Vector3(direction.x * _radius, direction.y * _radius, 0);
+
+        // Rotate the projectile using Atan2 to get the angle between the projectile and the center of the circle
+        float angleInDegrees = (float)(Mathf.Atan2(direction.y, direction.x) - Math.PI/2) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.Euler(0, 0, angleInDegrees);
+
+        projectile.transform.localScale = new Vector3(_projectileScale, _projectileScale, 1);
+
+        SpriteRenderer projectileSpriteRenderer = projectile.AddComponent<SpriteRenderer>();
+        projectileSpriteRenderer.sprite = _projectileSprite;
+
+        BoxCollider2D boxCollider = projectile.AddComponent<BoxCollider2D>();
+
+        float projectileSize = projectileSpriteRenderer.bounds.size.x;
+        boxCollider.size = new Vector2(projectileSize, projectileSize);
+        boxCollider.isTrigger = true;
+
+        Rigidbody2D rigidbody = projectile.AddComponent<Rigidbody2D>();
+        rigidbody.gravityScale = 0;
+
+        // Bomb shrapnel is considered a bomb type when it hits a player
+        boxCollider.AddComponent<Projectile>();
+
+        // Bomb shrapnel movement isn't computed in the Projectile script
+        rigidbody.linearVelocity = _projectileSpeed * direction;
+    }
+
+    private void DrawDebugCircle(Vector2 center, float radius, int segments, Color color) {
         float angleIncrement = Mathf.PI * 2 / segments;
 
         for (int i = 0; i < segments; i++) {

@@ -354,8 +354,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 179790099983100962, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
+      propertyPath: _projectiles
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 179790099983100962, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
+      propertyPath: _detonationTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 179790099983100962, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
       propertyPath: _projectileSpeed
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8189404341674068699, guid: 6d9e3b02732fd5d49af74c1517633f84, type: 3}
       propertyPath: m_LocalPosition.x
