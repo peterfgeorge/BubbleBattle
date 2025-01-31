@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public string allowedSceneName = "StartMenuScene";
     private List<InputDevice> activeDevices = new List<InputDevice>();
     public string[] gameSceneName;
+    public int[] playerScores = new int[4];
 
     private PlayerInputManager manager;
     private int index = 0;
