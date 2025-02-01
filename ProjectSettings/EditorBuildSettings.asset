@@ -32,6 +32,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/GreatReef.unity
     guid: 4aa302c607a3b1b49b718e6d21af2eec
+  - enabled: 1
+    path: Assets/Scenes/Scoreboards/2PlayerRacetrack.unity
+    guid: c225c52b09a62c8468acd68ef469edfa
+  - enabled: 1
+    path: Assets/Scenes/Scoreboards/3PlayerRacetrack.unity
+    guid: 0cccc2c385e8cde40b481af06827a9c8
+  - enabled: 1
+    path: Assets/Scenes/Scoreboards/4PlayerRacetrack.unity
+    guid: 752990d342f1ef04885c342b0b35a143
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

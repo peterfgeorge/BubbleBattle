@@ -10,8 +10,15 @@ public class GameOver : MonoBehaviour {
     // Constant for restarting game
     private const int _restartTime = 3;
 
+    private GameObject gameManager;
+    private PlayerManager playerManager;
+
     // Show Winner Panel with the corresponding sprite from _gameOverSprites
     public void ShowWinner() {
+        gameManager = GameObject.Find("GameManager");
+        playerManager = gameManager.GetComponent<PlayerManager>();
+
+
         Debug.Log("GAME OVER, SHOWING WINNER");
         gameObject.SetActive(true);
         PlayerController winner = GetWinner();
@@ -23,6 +30,8 @@ public class GameOver : MonoBehaviour {
             HideLosers(winner);
 
             _gameOverSprites[winner.PlayerIndex].SetActive(true);
+
+            playerManager.playerScores[winner.PlayerIndex] += 1;
         } else {
             Debug.LogWarning("No winner found!");
         }
@@ -35,10 +44,10 @@ public class GameOver : MonoBehaviour {
         foreach (GameObject player in GameDataManager.activePlayers)
         {
             PlayerController playerController = player.GetComponent<PlayerController>();
-            if (playerController != winner)
-            {
-                playerController.gameObject.SetActive(false);
-            }
+            // if (playerController != winner)
+            // {
+            //     playerController.gameObject.SetActive(false);
+            // }
         }
     }
     
@@ -72,7 +81,7 @@ public class GameOver : MonoBehaviour {
         return winningPlayer;
     }
 
-    private void PlayAgain() {
+    public void PlayAgain() {
         PlayerManager playerManager = FindAnyObjectByType<PlayerManager>();
         
         if (playerManager == null) {
@@ -97,7 +106,7 @@ public class GameOver : MonoBehaviour {
             pc.Reset();
         }
 
-        Debug.Log("Okay were starting the game!");
-        playerManager.StartGame();
+        Debug.Log("Okay were going to the win screen!");
+        playerManager.GoToWinScreen();
     }
 }

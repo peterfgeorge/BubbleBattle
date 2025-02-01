@@ -111,6 +111,32 @@ public class PlayerManager : MonoBehaviour
         newPlayer.gameObject.transform.SetParent(activePlayersParent.transform);
     }
 
+    public void GoToWinScreen()
+    {
+        GameDataManager.activePlayers = activePlayers;
+
+        activePlayers.ForEach(player => player.SetActive(true));
+        Debug.Log("players should be active");
+
+        int playerCount = activePlayers.Count;
+
+        switch (playerCount)
+        {
+            case 2:
+                SceneManager.LoadScene("2PlayerRacetrack");
+                break;
+            case 3:
+                SceneManager.LoadScene("3PlayerRacetrack");
+                break;
+            case 4:
+                SceneManager.LoadScene("4PlayerRacetrack");
+                break;
+            default:
+                Debug.LogError("Invalid player count: " + playerCount);
+                break;
+        }
+    }
+
     public void StartGame()
     {
         GameDataManager.activePlayers = activePlayers;

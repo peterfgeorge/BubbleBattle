@@ -110,7 +110,7 @@ public class Projectile : MonoBehaviour
                     Debug.Log("SeaWeed Hit");
                     if (player != null)
                     {
-                        player.ApplySlowEffect(0.5f, 3f); // Reduce speed to 50% for 3 seconds
+                        player.ApplySlowEffect(0f, 3f); // Reduce speed to 50% for 3 seconds
                     }
                     Destroy(gameObject);
                 }
