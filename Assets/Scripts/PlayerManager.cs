@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private List<InputDevice> activeDevices = new List<InputDevice>();
     public string[] gameSceneName;
     public int[] playerScores = new int[4];
+    public int playerIndexWhoWon;
 
     private PlayerInputManager manager;
     private int index = 0;

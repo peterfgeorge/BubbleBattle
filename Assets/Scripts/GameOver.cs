@@ -32,7 +32,9 @@ public class GameOver : MonoBehaviour {
             _gameOverSprites[winner.PlayerIndex].SetActive(true);
 
             playerManager.playerScores[winner.PlayerIndex] += 1;
+            playerManager.playerIndexWhoWon = winner.PlayerIndex;
         } else {
+            playerManager.playerIndexWhoWon = -1;
             Debug.LogWarning("No winner found!");
         }
 

@@ -11,11 +11,10 @@ public class ScoreboardManager : MonoBehaviour
     private GameObject gameManager;
     private PlayerManager playerManager;
     private int highestScore;
-    private float timer = 0f; // Timer starts at 0
+    private int playerIndexWhoWon;
 
     void Start()
     {
-        timer = 0;
         gameManager = GameObject.Find("GameManager");
 
         if (gameManager == null)
@@ -36,29 +35,12 @@ public class ScoreboardManager : MonoBehaviour
         SpawnSprites();
         int highestScoreIndex = GetHighestScoreIndex();
 
-        
-
-        // if (highestScoreIndex != -1 && highestScoreIndex < spawnedObjects.Count)
-        // {
-        //     StartCoroutine(MoveWinnerSpriteUp(spawnedObjects[highestScoreIndex], 1.46f, 1f));
-        // }
-
-    }
-
-    void Update()
-    {
-        timer += Time.deltaTime; // Increment timer each frame
-
-        if (timer >= 3f) // Check if 3 seconds have passed
-        {
-            if (highestScore > 4) {
-            Debug.Log("going to start menu");
-            SceneManager.LoadScene("StartMenuScene");
-            } else {
-                Debug.Log("going again");
-                playerManager.StartGame();
-            }
+        if (playerManager.playerIndexWhoWon != -1) {
+            playerIndexWhoWon = playerManager.playerIndexWhoWon;
+        } else {
+            playerIndexWhoWon = 0;
         }
+        StartCoroutine(MoveWinnerSpriteUp(spawnedObjects[playerIndexWhoWon], 1.46f, 1f));
     }
 
     private void SpawnSprites()
@@ -73,9 +55,15 @@ public class ScoreboardManager : MonoBehaviour
                 Debug.Log("hiiii");
                 // Get player's current score
                 float playerScore = playerManager.playerScores[i];
+                float newYPosition;
 
                 // Calculate new y-position
-                float newYPosition = spawnPoints[i].transform.position.y + (playerScore * 1.46f);
+                if(i == playerManager.playerIndexWhoWon) {
+                    newYPosition = spawnPoints[i].transform.position.y + (playerScore * 1.46f) - 1.46f;
+                } else {
+                    newYPosition = spawnPoints[i].transform.position.y + (playerScore * 1.46f);
+                }
+                
 
                 // Set new spawn position with updated Y value
                 Vector3 spawnPosition = new Vector3(
@@ -119,20 +107,22 @@ public class ScoreboardManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        // if (winner == null) yield break;
+        if(playerManager.playerIndexWhoWon != -1) {
+            if (winner == null) yield break;
 
-        // Vector3 startPosition = winner.transform.position;
-        // Vector3 targetPosition = startPosition + new Vector3(0, distance, 0);
-        // float elapsedTime = 0f;
+            Vector3 startPosition = winner.transform.position;
+            Vector3 targetPosition = startPosition + new Vector3(0, distance, 0);
+            float elapsedTime = 0f;
 
-        // while (elapsedTime < duration)
-        // {
-        //     winner.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
-        //     elapsedTime += Time.deltaTime;
-        //     yield return null;
-        // }
+            while (elapsedTime < duration)
+            {
+                winner.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
 
-        // winner.transform.position = targetPosition; // Ensure it reaches the exact position
+            winner.transform.position = targetPosition; // Ensure it reaches the exact position
+        }
 
         yield return new WaitForSeconds(1f);
 
