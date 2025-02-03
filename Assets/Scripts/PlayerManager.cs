@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem.Controls;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> players = new List<GameObject>();
-    [SerializeField] List<GameObject> activePlayers = new List<GameObject>();
+    [SerializeField] public List<GameObject> activePlayers = new List<GameObject>();
     [SerializeField] List<GameObject> unreadyPanels = new List<GameObject>();
     [SerializeField] List<GameObject> readyPanels = new List<GameObject>();
     [SerializeField] public string allowedSceneName = "StartMenuScene";
@@ -26,6 +27,21 @@ public class PlayerManager : MonoBehaviour
     public List<GameObject> ActivePlayers => activePlayers;
 
     public GameObject activePlayersParent;
+
+    private static PlayerManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // Prevents duplicates
+        }
+    }
 
     void Start()
     {
@@ -84,6 +100,64 @@ public class PlayerManager : MonoBehaviour
         Debug.Log($"Next spawn set to: {players[index].name}");
     }
 
+    private List<GameObject> FindPanelsInHierarchy(Transform parent, string tag)
+    {
+        List<GameObject> panelList = new List<GameObject>();
+
+        foreach (Transform child in parent.GetComponentsInChildren<Transform>(true)) // true includes inactive objects
+        {
+            if (child.CompareTag(tag))
+            {
+                panelList.Add(child.gameObject);
+            }
+        }
+
+        return panelList;
+    }
+
+    public void GetPlayersWhoAlreadyJoined() {
+        Transform canvas = GameObject.Find("Canvas")?.transform;
+        Transform readyUpMenu = canvas?.Find("ReadyUpMenu");
+
+        unreadyPanels = FindPanelsInHierarchy(readyUpMenu, "UnreadyPanel");
+        readyPanels = FindPanelsInHierarchy(readyUpMenu, "ReadyPanel");
+
+        // Get the number of children (players) under activePlayersParent
+        int childCount = activePlayersParent.transform.childCount;
+        Debug.Log($"Total Players in Scene: {childCount}");
+
+        for (int i = 0; i < childCount; i++)
+        {
+            Transform playerTransform = activePlayersParent.transform.GetChild(i);
+            Debug.Log($"Player index {i} is already joined");
+
+            // Activate the corresponding unready panel
+            unreadyPanels[i].SetActive(false);
+            readyPanels[i].SetActive(true);
+
+            // Get the player's sprite from the "Art" child object
+            Transform artTransform = playerTransform.Find("Art");
+            if (artTransform != null)
+            {
+                SpriteRenderer artSpriteRenderer = artTransform.GetComponent<SpriteRenderer>();
+                Image panelImage = readyPanels[i].transform.Find("Image")?.GetComponent<Image>();
+
+                if (panelImage != null && artSpriteRenderer != null)
+                {
+                    panelImage.sprite = artSpriteRenderer.sprite;
+                }
+                else
+                {
+                    Debug.LogWarning($"Missing components on player {playerTransform.name} at index {i}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Art transform not found on player {playerTransform.name} at index {i}");
+            }
+        }
+    }
+
     public void OnPlayerJoined(PlayerInput newPlayer)
     {
         if (SceneManager.GetActiveScene().name != allowedSceneName)
@@ -110,6 +184,7 @@ public class PlayerManager : MonoBehaviour
         newPlayer.gameObject.name = $"Player {newPlayer.playerIndex}";
 
         newPlayer.gameObject.transform.SetParent(activePlayersParent.transform);
+        Debug.Log("Active player count " + activePlayers.Count);
     }
 
     public void GoToWinScreen()
