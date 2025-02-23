@@ -30,6 +30,9 @@ public class PlayerManager : MonoBehaviour
 
     private static PlayerManager instance;
 
+    [SerializeField]
+    private Button startButton;
+
     void Awake()
     {
         if (instance == null)
@@ -98,6 +101,8 @@ public class PlayerManager : MonoBehaviour
         // Update the player prefab for the next spawn
         manager.playerPrefab = players[index];
         Debug.Log($"Next spawn set to: {players[index].name}");
+
+        startButton.interactable = index > 0;
     }
 
     private List<GameObject> FindPanelsInHierarchy(Transform parent, string tag)
