@@ -89,7 +89,7 @@ public class Bomb : MonoBehaviour
             );
 
             // Rotate the projectile using Atan2 to get the angle between the projectile and the center of the circle
-            float angleInDegrees = (float)(Mathf.Atan2(yAngle, xAngle) + Math.PI/4) * Mathf.Rad2Deg;
+            float angleInDegrees = (float)(Mathf.Atan2(yAngle, xAngle) - Math.PI/2) * Mathf.Rad2Deg;
             projectile.transform.rotation = Quaternion.Euler(0, 0, angleInDegrees);
 
             projectile.transform.localScale = new Vector3(_projectileScale, _projectileScale, 1);
