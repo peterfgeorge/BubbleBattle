@@ -16,33 +16,55 @@ public class Bomb : MonoBehaviour
     [SerializeField]
     private Sprite _projectileSprite;
 
-    private float _radius = 0;
+    [SerializeField]
+    private bool _destroyOnDetonate = false;
+
+    private float _radius;
+    private float _timeUntilDetonation;
 
     void Awake() 
     {
         float localScale = transform.localScale.x;
-        Debug.Log("localScale: " + localScale);
-        float diameter = GetComponent<SpriteRenderer>().bounds.size.x  * Mathf.Sign(transform.localScale.x);
+        float diameter = GetComponent<SpriteRenderer>().bounds.size.x  * Mathf.Sign(localScale);
         _radius =  diameter / 2;
-        //Debug.Log("Awake: " + _radius);
+
+        Debug.Log("Bomb localScale: " + localScale + " radius: " + _radius);
     }
 
-    void Start() 
+    void Start()
     {
-        Invoke(nameof(Detonate), _detonationTime);
+        // Resets detonation time when the bomb is re-enabled
+        _timeUntilDetonation = _detonationTime;
+        Debug.Log("Bomb detonation time: " + _detonationTime + " seconds");
     }
 
     void Update()
     {
+        if (_timeUntilDetonation <= 0)
+        {
+            Debug.Log("Bomb detonated! Projectiles: " + _projectiles);
+            Debug.Log("transform position: " + transform.position);
+            Detonate(transform);
+            _timeUntilDetonation = _detonationTime;
+
+            if (_destroyOnDetonate) 
+            {
+                Destroy(gameObject);
+            }
+        } 
+        else 
+        {
+            _timeUntilDetonation -= Time.deltaTime;
+        }
+
         DrawDebugCircle(transform.position, _radius, _projectiles, Color.red);
     }
 
-    private void Detonate() 
+    private void Detonate(Transform startPosition) 
     {
         for (int i = 0; i < _projectiles; i++)
         {
             GameObject projectile = new GameObject("Projectile");
-            projectile.transform.SetParent(transform);
 
             float angle = i * Mathf.PI * 2 / _projectiles;
             float xAngle = Mathf.Cos(angle);
@@ -60,7 +82,11 @@ public class Bomb : MonoBehaviour
             //     Quaternion.Euler(0, 0, i * _arcStride + 45)
             // );
 
-            projectile.transform.localPosition = new Vector3(xAngle * _radius, yAngle * _radius, 0);
+            projectile.transform.position = new Vector3(
+                xAngle * _radius + startPosition.position.x, 
+                yAngle * _radius + startPosition.position.y,
+                0
+            );
 
             // Rotate the projectile using Atan2 to get the angle between the projectile and the center of the circle
             float angleInDegrees = (float)(Mathf.Atan2(yAngle, xAngle) + Math.PI/4) * Mathf.Rad2Deg;
@@ -103,7 +129,7 @@ public class Bomb : MonoBehaviour
             Vector2 pointA = center + new Vector2(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius);
             Vector2 pointB = center + new Vector2(Mathf.Cos(angle + angleIncrement) * radius, Mathf.Sin(angle + angleIncrement) * radius);
 
-            Debug.DrawLine(pointA, pointB, color, 100.0f); 
+            Debug.DrawLine(pointA, pointB, color, 5.0f); 
         }
     }
 }
